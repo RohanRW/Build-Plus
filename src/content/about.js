@@ -4,12 +4,13 @@ export const about = {
   hero: {
     eyebrow: "About Us",
     title: "A development partner for landowners",
-    body: "Your land, our expertise. From land to landmark.",
+    body:
+      "BuildPlus is the turnkey development venture of Ray White Ltd., created so that landowners can develop their property without having to manage the development themselves.",
   },
 
   whoWeAre: {
     eyebrow: "Who We Are",
-    title: "Who We Are",
+    title: "One team, accountable from concept to handover",
     paragraphs: [
       "BuildPlus is a turnkey development venture of Ray White Ltd., created to provide landowners with a professionally managed approach to developing their property.",
       "From feasibility and architectural planning to engineering, budgeting, procurement, construction, quality control and final handover, BuildPlus brings the entire development process under one responsible team.",
@@ -31,7 +32,7 @@ export const about = {
 
   ourApproach: {
     eyebrow: "Our Approach",
-    title: "Our Approach",
+    title: "Six principles behind every project",
     principles: [
       {
         name: "Development-led thinking",
@@ -67,7 +68,7 @@ export const about = {
 
   leadership: {
     eyebrow: "Leadership & Professional Team",
-    title: "Leadership & Professional Team",
+    title: "A multidisciplinary team, under one roof",
     body:
       "BuildPlus works through a multidisciplinary team covering development, architecture, engineering, project management, commercial coordination and quality assurance.",
     /*

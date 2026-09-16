@@ -1,5 +1,8 @@
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
+import PageHero from "@/components/page-hero";
+import Reveal from "@/components/reveal";
 import { ContentPending, Section, SectionHeading } from "@/components/section";
 import { services } from "@/content/services";
 import { home } from "@/content/home";
@@ -18,47 +21,66 @@ export default function ServicesPage() {
 
   return (
     <>
-      <Section id="services-hero" tone="mist">
-        <SectionHeading
-          eyebrow={services.hero.eyebrow}
-          title={services.hero.title}
-          body={services.hero.body}
-        />
-      </Section>
+      <PageHero
+        eyebrow={services.hero.eyebrow}
+        title={services.hero.title}
+        body={services.hero.body}
+      />
 
-      {services.models.map((model, index) => (
-        <Section
-          key={model.slug}
-          id={model.slug}
-          tone={index % 2 === 1 ? "mist" : "canvas"}
-        >
-          <p className="eyebrow">{model.option}</p>
-          <h2 className="mt-4 text-3xl font-bold sm:text-4xl">{model.name}</h2>
-          <p className="mt-6 max-w-3xl text-lg leading-relaxed text-slate">
-            {model.summary}
-          </p>
+      {/* The three commercial models */}
+      <Section id="service-models">
+        <div className="grid gap-px bg-line lg:grid-cols-3">
+          {services.models.map((model, index) => (
+            <Reveal
+              as="article"
+              key={model.slug}
+              id={model.slug}
+              delay={index * 0.08}
+              className="group flex scroll-mt-28 flex-col bg-canvas p-8 transition-colors duration-300 hover:bg-mist sm:p-10"
+            >
+              <p className="eyebrow !text-[0.6rem]">{model.option}</p>
+              <h2 className="mt-4 text-2xl font-extrabold uppercase tracking-tight sm:text-3xl">
+                {model.name}
+              </h2>
+              <p className="mt-5 flex-1 leading-relaxed text-slate">
+                {model.summary}
+              </p>
 
-          {model.includes.length > 0 && (
-            <ul className="mt-8 grid max-w-3xl gap-3 sm:grid-cols-2">
-              {model.includes.map((item) => (
-                <li key={item} className="border-t border-line pt-3 text-slate">
-                  {item}
-                </li>
-              ))}
-            </ul>
-          )}
+              {model.includes.length > 0 && (
+                <ul className="mt-7 space-y-2.5 text-sm">
+                  {model.includes.map((item) => (
+                    <li
+                      key={item}
+                      className="border-t border-line pt-2.5 text-slate"
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              )}
 
-          {model.bestFor && (
-            <p className="mt-8 border-l-2 border-ink pl-6 text-slate">
-              <span className="font-semibold text-ink">Best for: </span>
-              {model.bestFor}
-            </p>
-          )}
-        </Section>
-      ))}
+              {model.bestFor && (
+                <p className="mt-7 border-l-2 border-ink pl-5 text-sm text-slate">
+                  <span className="font-semibold text-ink">Best for: </span>
+                  {model.bestFor}
+                </p>
+              )}
 
-      {missingDetail && (
-        <Section id="services-pending">
+              <Link
+                href={primaryCta.href}
+                className="mt-8 inline-flex items-center gap-2 text-[0.7rem] font-bold uppercase tracking-[0.16em] text-ink"
+              >
+                Discuss this option
+                <ArrowRight
+                  size={14}
+                  className="transition-transform group-hover:translate-x-1"
+                />
+              </Link>
+            </Reveal>
+          ))}
+        </div>
+
+        {missingDetail && (
           <ContentPending
             label="Service model detail"
             needs={[
@@ -67,8 +89,8 @@ export default function ServicesPage() {
               "How each is priced or structured commercially, if you want that shown",
             ]}
           />
-        </Section>
-      )}
+        )}
+      </Section>
 
       {/* Development Process */}
       <Section id="development-process" tone="ink">
@@ -78,40 +100,58 @@ export default function ServicesPage() {
           tone="light"
         />
 
-        <ol className="mt-12 space-y-10">
-          {home.howItWorks.phases.map((phase) => (
-            <li
+        <ol className="mt-14 space-y-0">
+          {home.howItWorks.phases.map((phase, index) => (
+            <Reveal
+              as="li"
               key={phase.number}
-              className="grid gap-6 border-t border-white/20 pt-8 md:grid-cols-[6rem_1fr]"
+              delay={Math.min(index, 3) * 0.05}
+              className="grid gap-6 border-t border-white/15 py-9 md:grid-cols-[7rem_1fr]"
             >
-              <p className="font-display text-4xl font-extrabold text-white/30">
+              <p className="text-4xl font-extrabold text-white/25">
                 {phase.number}
               </p>
               <div>
-                <h3 className="text-xl font-bold text-white">{phase.name}</h3>
-                <p className="mt-2 text-white/70">{phase.summary}</p>
+                <h3 className="text-xl font-bold text-white sm:text-2xl">
+                  {phase.name}
+                </h3>
+                <p className="mt-2 leading-relaxed text-white/70">
+                  {phase.summary}
+                </p>
                 {phase.points.length > 0 && (
-                  <ul className="mt-4 grid gap-2 text-sm text-white/60 sm:grid-cols-2">
+                  <ul className="mt-6 grid gap-2 text-sm text-white/55 sm:grid-cols-2 lg:grid-cols-3">
                     {phase.points.map((point) => (
-                      <li key={point}>{point}</li>
+                      <li key={point} className="flex items-start gap-2.5">
+                        <span
+                          aria-hidden="true"
+                          className="mt-2 h-1 w-1 shrink-0 bg-white/40"
+                        />
+                        {point}
+                      </li>
                     ))}
                   </ul>
                 )}
               </div>
-            </li>
+            </Reveal>
           ))}
         </ol>
 
-        <p className="mt-12 max-w-3xl text-sm text-white/60">
-          {services.process.note}
-        </p>
+        <Reveal delay={0.1}>
+          <p className="mt-12 max-w-3xl border-t border-white/15 pt-8 text-sm leading-relaxed text-white/55">
+            {services.process.note}
+          </p>
 
-        <Link
-          href={primaryCta.href}
-          className="mt-10 inline-flex bg-white px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-ink transition hover:bg-white/90"
-        >
-          {primaryCta.label}
-        </Link>
+          <Link
+            href={primaryCta.href}
+            className="group mt-10 inline-flex items-center gap-3 bg-white px-8 py-4 text-xs font-bold uppercase tracking-[0.18em] text-ink transition hover:bg-white/85"
+          >
+            {primaryCta.label}
+            <ArrowRight
+              size={16}
+              className="transition-transform group-hover:translate-x-1"
+            />
+          </Link>
+        </Reveal>
       </Section>
     </>
   );

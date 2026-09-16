@@ -3,18 +3,19 @@
 /*
  * BuildPlus brand tokens.
  *
- * TODO(brand): the accent colour is a PLACEHOLDER. The supplied logo is
- * monochrome charcoal, and no accent has been confirmed yet. Change
- * --bp-accent here and it updates site-wide.
+ * The palette is deliberately monochrome: pure black, the charcoal grey
+ * sampled from the logo, light greys and white. No accent colour — the
+ * brand's contrast comes from black against white and from photography.
  */
 :root {
+  --bp-black: #000000; /* pure black — primary ink and dark sections */
+  --bp-ink: #000000;
+  --bp-carbon: #0d0d0d; /* raised surfaces inside black sections */
   --bp-charcoal: #3f3f3f; /* sampled from the logo wordmark */
-  --bp-ink: #1b1b1b;
-  --bp-slate: #6b6b6b;
-  --bp-line: #e3e3e3;
-  --bp-mist: #f6f6f5;
+  --bp-slate: #6f6f6f; /* body copy on light backgrounds */
+  --bp-line: #e4e4e4; /* light grey hairlines */
+  --bp-mist: #f4f4f4; /* light grey surface */
   --bp-canvas: #ffffff;
-  --bp-accent: #b08d57; /* PLACEHOLDER bronze — confirm or remove */
 
   --background: var(--bp-canvas);
   --foreground: var(--bp-ink);
@@ -24,40 +25,69 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  --color-charcoal: var(--bp-charcoal);
+  --color-black: var(--bp-black);
   --color-ink: var(--bp-ink);
+  --color-carbon: var(--bp-carbon);
+  --color-charcoal: var(--bp-charcoal);
   --color-slate: var(--bp-slate);
   --color-line: var(--bp-line);
   --color-mist: var(--bp-mist);
   --color-canvas: var(--bp-canvas);
-  --color-accent: var(--bp-accent);
 
-  --font-sans: var(--font-body);
-  --font-display: var(--font-display);
+  --font-sans: var(--font-montserrat);
+  --font-display: var(--font-montserrat);
+}
+
+* {
+  border-color: var(--bp-line);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-body), Arial, Helvetica, sans-serif;
+  font-family: var(--font-montserrat), "Segoe UI", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 h1,
 h2,
-h3 {
-  font-family: var(--font-display), var(--font-body), sans-serif;
-  letter-spacing: -0.01em;
+h3,
+h4 {
+  font-family: var(--font-montserrat), "Segoe UI", Arial, sans-serif;
+  letter-spacing: -0.02em;
 }
 
-/* The logo lockup and section eyebrows use wide tracked caps. */
+::selection {
+  background: var(--bp-black);
+  color: #ffffff;
+}
+
+/* Wide tracked caps, echoing the tagline set under the logo wordmark. */
 .eyebrow {
-  font-family: var(--font-display), sans-serif;
   text-transform: uppercase;
-  letter-spacing: 0.28em;
-  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  font-size: 0.68rem;
   font-weight: 600;
   color: var(--bp-slate);
+}
+
+/* Display headings: tight, heavy, uppercase — the wordmark's voice. */
+.display {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.025em;
+  line-height: 0.92;
+}
+
+/* A thin rule that draws itself in as a section opens. */
+.rule {
+  height: 1px;
+  background: var(--bp-line);
 }
 
 /* Marks a block whose copy is still pending from the client. */
@@ -65,4 +95,129 @@ h3 {
   border: 1px dashed var(--bp-line);
   background: var(--bp-mist);
   color: var(--bp-slate);
+}
+
+/* Continuous capability strip under the hero. */
+@keyframes bp-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* The track is twice the strip's width by design — clip it, or the page
+   itself becomes that wide and scrolls sideways on phones. */
+.marquee {
+  overflow: hidden;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: bp-marquee 42s linear infinite;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Slow drift on the hero poster while the video loads. */
+@keyframes bp-drift {
+  from {
+    transform: scale(1.06);
+  }
+  to {
+    transform: scale(1.16);
+  }
+}
+
+.hero-drift {
+  animation: bp-drift 24s ease-in-out infinite alternate;
+}
+
+/* The palette is monochrome, so the footage is too. */
+.hero-media {
+  filter: grayscale(1) contrast(1.06);
+}
+
+/* The hero scroll cue. */
+@keyframes bp-nudge {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 1;
+  }
+}
+
+.scroll-cue {
+  animation: bp-nudge 2.4s ease-in-out infinite;
+}
+
+/*
+ * Scroll reveals.
+ *
+ * Elements are only hidden once the inline script in the layout has marked
+ * the document as scripted, so a page that never runs JavaScript renders
+ * fully visible instead of blank. The marker is an attribute React never
+ * rendered, so hydration has nothing to diff against.
+ */
+[data-js] [data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+[data-js] [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0s);
+}
+
+/* Hero entrance — pure CSS, so it plays whether or not React has hydrated. */
+@keyframes bp-rise {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.rise {
+  animation: bp-rise 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--rise-delay, 0s);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .marquee-track,
+  .hero-drift,
+  .scroll-cue,
+  .rise {
+    animation: none !important;
+  }
+
+  /* Still images only: the hero falls back to its poster. */
+  .hero-video {
+    display: none;
+  }
+
+  [data-js] [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }

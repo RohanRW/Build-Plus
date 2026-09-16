@@ -7,17 +7,18 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import {
   LAND_SIZE_UNITS,
   LAND_TYPES,
-  STANDARD_OPTIONS,
+  PACKAGE_OPTIONS,
   landownerDefaults,
   landownerSchema,
 } from "@/lib/landowner-schema";
 
 const fieldClass =
-  "w-full rounded-none border border-line bg-canvas px-4 py-3 text-ink outline-none transition focus:border-charcoal";
-const labelClass = "mb-2 block text-sm font-medium text-ink";
+  "w-full rounded-none border border-line bg-canvas px-4 py-3.5 text-ink outline-none transition focus:border-ink focus:ring-1 focus:ring-ink";
+const labelClass =
+  "mb-2 block text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-ink";
 const errorClass = "mt-2 block text-sm text-red-700";
 
-export default function LandownerForm({ initialStandard = "" }) {
+export default function LandownerForm({ initialPackage = "" }) {
   const [status, setStatus] = useState({ state: "idle", message: "" });
 
   const {
@@ -27,7 +28,7 @@ export default function LandownerForm({ initialStandard = "" }) {
     formState: { errors, isSubmitting },
   } = useForm({
     resolver: zodResolver(landownerSchema),
-    defaultValues: { ...landownerDefaults, standard: initialStandard },
+    defaultValues: { ...landownerDefaults, packageLevel: initialPackage },
   });
 
   async function onSubmit(values) {
@@ -51,7 +52,7 @@ export default function LandownerForm({ initialStandard = "" }) {
         return;
       }
 
-      reset({ ...landownerDefaults, standard: initialStandard });
+      reset({ ...landownerDefaults, packageLevel: initialPackage });
       setStatus({
         state: "success",
         message:
@@ -187,26 +188,26 @@ export default function LandownerForm({ initialStandard = "" }) {
         </div>
 
         <div>
-          <label className={labelClass} htmlFor="standard">
-            Development Standard <span className="text-slate">*</span>
+          <label className={labelClass} htmlFor="packageLevel">
+            Package <span className="text-slate">*</span>
           </label>
           <select
-            id="standard"
+            id="packageLevel"
             className={fieldClass}
-            aria-invalid={Boolean(errors.standard)}
-            {...register("standard")}
+            aria-invalid={Boolean(errors.packageLevel)}
+            {...register("packageLevel")}
           >
             <option value="" disabled>
-              Select standard
+              Select package
             </option>
-            {STANDARD_OPTIONS.map((option) => (
+            {PACKAGE_OPTIONS.map((option) => (
               <option key={option} value={option}>
                 {option}
               </option>
             ))}
           </select>
-          {errors.standard && (
-            <span className={errorClass}>{errors.standard.message}</span>
+          {errors.packageLevel && (
+            <span className={errorClass}>{errors.packageLevel.message}</span>
           )}
         </div>
       </div>
@@ -214,7 +215,7 @@ export default function LandownerForm({ initialStandard = "" }) {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="mt-8 inline-flex items-center justify-center bg-ink px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-charcoal disabled:cursor-not-allowed disabled:opacity-60"
+        className="mt-10 inline-flex items-center justify-center gap-3 bg-ink px-9 py-4 text-xs font-bold uppercase tracking-[0.18em] text-white transition hover:bg-charcoal disabled:cursor-not-allowed disabled:opacity-60"
       >
         {isSubmitting ? "Sending…" : "Send Enquiry"}
       </button>

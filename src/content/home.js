@@ -7,15 +7,58 @@
 export const home = {
   hero: {
     eyebrow: "A Ray White Ltd. Venture",
-    title: "Your Land, Our Expertise.",
-    subtitle: "From Land to Landmark.",
+    // The logo lockup already reads "Your Land, Our Expertise", so the
+    // headline says the next thing rather than repeating it.
+    title: "From Land to Landmark.",
     body:
       "You already own the most important part of the project — the land. From the first concept to final handover, one professional team manages the entire development process for you.",
-    // TODO(assets): hero image or render. Drop the file in /public/images
-    // and reference it here.
-    image: null,
-    imageAlt: "",
+    /*
+     * Hero background video.
+     *
+     * TODO(assets): `src` is a PLACEHOLDER — a free Pexels construction
+     * clip hotlinked from their CDN. Replace it with BuildPlus site
+     * footage: either a direct .mp4 URL, or drop a file in /public/videos/
+     * and point to "/videos/your-file.mp4". `poster` is a frame grabbed
+     * from the same clip; swap it whenever the video changes, since it is
+     * what shows while the video loads and all that renders for visitors
+     * who prefer reduced motion.
+     */
+    video: {
+      src: "https://videos.pexels.com/video-files/855271/855271-hd_1920_1080_25fps.mp4",
+      poster: "/images/hero-poster.jpg",
+    },
+    imageAlt: "Construction of a BuildPlus development in progress",
+    secondaryCtaLabel: "See how it works",
+    secondaryCtaHref: "#how-it-works",
   },
+
+  // Scrolling capability strip directly under the hero.
+  capabilities: [
+    "Feasibility",
+    "Architecture",
+    "Structural Engineering",
+    "MEP Design",
+    "Approvals",
+    "BOQ & Budgeting",
+    "Procurement",
+    "Site Management",
+    "QA / QC",
+    "Finishing",
+    "Handover",
+  ],
+
+  /*
+   * Figures are drawn from what is already on record elsewhere in this
+   * repo — six developments, two growth corridors, an eight-phase
+   * process, one accountable partner. TODO(content): swap in audited
+   * numbers (sft delivered, years active) when they are confirmed.
+   */
+  stats: [
+    { value: "06", label: "Developments behind the venture" },
+    { value: "02", label: "Growth corridors in Dhaka" },
+    { value: "08", label: "Phases from concept to handover" },
+    { value: "01", label: "Accountable development partner" },
+  ],
 
   rayWhiteVenture: {
     eyebrow: "Backed By",
@@ -223,7 +266,7 @@ export const home = {
 
   developmentExperience: {
     eyebrow: "Development Experience",
-    title: "Development Experience Behind BuildPlus",
+    title: "The record behind the venture",
     intro:
       "BuildPlus is backed by the development experience of Ray White Ltd. Selected developments below represent the architectural, engineering, project-management and construction expertise supporting the venture.",
     // Cards pull from src/content/experience.js.
@@ -232,14 +275,14 @@ export const home = {
     ctaHref: "/experience",
   },
 
-  standardsTeaser: {
-    eyebrow: "Development Standards",
-    title: "Specification levels, matched to your objectives",
+  packagesTeaser: {
+    eyebrow: "Packages",
+    title: "Four packages, one professional standard of delivery",
     body:
-      "BuildPlus offers different levels of architectural specification, materials, finishes and building systems depending on the landowner's objectives, project type and investment plan.",
-    // Cards pull from src/content/standards.js.
-    ctaLabel: "View development standards",
-    ctaHref: "/development-standards",
+      "BuildPlus offers different levels of architectural specification, materials, finishes and building systems depending on the landowner's objectives, project type and investment plan. The management, engineering and reporting are the same in every one.",
+    // Cards pull from src/content/packages.js.
+    ctaLabel: "Compare packages",
+    ctaHref: "/packages",
   },
 
   landownerCta: {

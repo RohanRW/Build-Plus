@@ -9,6 +9,9 @@ export const site = {
   name: "BuildPlus",
   legalName: "Build Plus",
   parent: "Ray White Ltd.",
+  // The logo lockup already carries "Your Land, Our Expertise", so the
+  // tagline is never set again in type next to the logo. It stays here
+  // only for page titles and social previews.
   tagline: "Your Land, Our Expertise.",
   subTagline: "From Land to Landmark.",
 
@@ -30,7 +33,7 @@ export const site = {
     ],
     mapsUrl: "https://maps.app.goo.gl/Fu4qGcMe1MN5M6b46",
     mapsLabel: "Get Directions",
-    hours: "", // TODO(content): office hours, if you want them shown
+    hours: "Sat – Thu, 10:00 – 19:00", // TODO(content): confirm office hours
   },
 
   /**
@@ -56,7 +59,7 @@ export const nav = [
   { label: "About Us", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Experience", href: "/experience" },
-  { label: "Development Standards", href: "/development-standards" },
+  { label: "Packages", href: "/packages" },
 ];
 
 export const primaryCta = {
