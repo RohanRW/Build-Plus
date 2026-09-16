@@ -9,16 +9,74 @@ export const about = {
 
   whoWeAre: {
     eyebrow: "Who We Are",
-    title: "", // TODO(content)
-    // TODO(content): founding year, team size, disciplines in-house,
-    // where you operate. 2–3 paragraphs.
-    paragraphs: [],
-    // TODO(content): leadership. Photos optional.
-    // { name, role, bio, photo }
-    leadership: [],
-    // TODO(content): optional headline numbers, e.g.
-    // { value: "20+", label: "Years of development experience" }
-    stats: [],
+    title: "Who We Are",
+    paragraphs: [
+      "BuildPlus is a turnkey development venture of Ray White Ltd., created to provide landowners with a professionally managed approach to developing their property.",
+      "From feasibility and architectural planning to engineering, budgeting, procurement, construction, quality control and final handover, BuildPlus brings the entire development process under one responsible team.",
+      "Our approach is supported by the development experience of Ray White Ltd., combining a developer's perspective with structured project management, technical coordination and attention to quality.",
+    ],
+    /*
+     * TODO(content): swap to "Established in 2026 as a Ray White Ltd.
+     * venture." once the founding year is formally confirmed.
+     */
+    established: "A newly launched venture of Ray White Ltd.",
+  },
+
+  purpose: {
+    eyebrow: "Our Purpose",
+    title: "Our Purpose",
+    body:
+      "To make property development simpler, more transparent and professionally managed for landowners.",
+  },
+
+  ourApproach: {
+    eyebrow: "Our Approach",
+    title: "Our Approach",
+    principles: [
+      {
+        name: "Development-led thinking",
+        body:
+          "We approach each project as a complete real-estate development, not simply a construction contract.",
+      },
+      {
+        name: "Design with purpose",
+        body:
+          "Architecture, functionality, long-term use and development value are considered together.",
+      },
+      {
+        name: "Technical control",
+        body:
+          "Engineering, consultants, contractors and site execution are professionally coordinated.",
+      },
+      {
+        name: "Commercial control",
+        body:
+          "Budgeting, BOQ, procurement and cost monitoring are structured from the beginning.",
+      },
+      {
+        name: "Transparent reporting",
+        body: "Owners remain informed throughout the project.",
+      },
+      {
+        name: "Single responsibility",
+        body:
+          "One development partner coordinates the process from concept to handover.",
+      },
+    ],
+  },
+
+  leadership: {
+    eyebrow: "Leadership & Professional Team",
+    title: "Leadership & Professional Team",
+    body:
+      "BuildPlus works through a multidisciplinary team covering development, architecture, engineering, project management, commercial coordination and quality assurance.",
+    /*
+     * TODO(content): add confirmed people here, e.g.
+     *   { name: "", role: "Managing Director", bio: "", photo: "" }
+     * Nothing is invented — the section shows the team statement above
+     * until real names are supplied.
+     */
+    people: [],
   },
 
   whyWeExist: {

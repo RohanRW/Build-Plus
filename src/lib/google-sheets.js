@@ -21,7 +21,7 @@ export const SHEET_HEADERS = [
   "Land Size",
   "Unit",
   "Type",
-  "Package",
+  "Development Standard",
 ];
 
 export function isSheetsConfigured() {
@@ -58,7 +58,7 @@ export async function appendEnquiry(enquiry) {
     enquiry.landSize,
     enquiry.landSizeUnit,
     enquiry.landType,
-    enquiry.package,
+    enquiry.standard,
   ];
 
   await sheets.spreadsheets.values.append({

@@ -23,38 +23,61 @@ export default function AboutPage() {
       <Section id="who-we-are">
         <SectionHeading
           eyebrow={about.whoWeAre.eyebrow}
-          title={about.whoWeAre.title || "Who we are"}
+          title={about.whoWeAre.title}
+        />
+        <div className="mt-8 max-w-3xl space-y-6 text-lg leading-relaxed text-slate">
+          {about.whoWeAre.paragraphs.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
+        <p className="mt-8 eyebrow">{about.whoWeAre.established}</p>
+      </Section>
+
+      {/* Our Purpose */}
+      <Section id="our-purpose" tone="ink">
+        <p className="eyebrow !text-white/60">{about.purpose.eyebrow}</p>
+        <p className="mt-6 max-w-4xl text-3xl font-bold leading-snug text-white sm:text-4xl">
+          {about.purpose.body}
+        </p>
+      </Section>
+
+      {/* Our Approach */}
+      <Section id="our-approach">
+        <SectionHeading
+          eyebrow={about.ourApproach.eyebrow}
+          title={about.ourApproach.title}
+        />
+        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {about.ourApproach.principles.map((principle) => (
+            <div key={principle.name} className="border-t-2 border-ink pt-6">
+              <h3 className="text-lg font-bold">{principle.name}</h3>
+              <p className="mt-3 leading-relaxed text-slate">{principle.body}</p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* Leadership & Professional Team */}
+      <Section id="leadership" tone="mist">
+        <SectionHeading
+          eyebrow={about.leadership.eyebrow}
+          title={about.leadership.title}
+          body={about.leadership.body}
         />
 
-        {about.whoWeAre.paragraphs.length > 0 ? (
-          <div className="mt-8 max-w-3xl space-y-6 text-lg leading-relaxed text-slate">
-            {about.whoWeAre.paragraphs.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-          </div>
-        ) : (
-          <ContentPending
-            label="Who We Are"
-            needs={[
-              "Founding year and a short company story (2–3 paragraphs)",
-              "Team size and which disciplines are in-house",
-              "Leadership names, roles and short bios (photos optional)",
-              "Optional headline figures, e.g. years of experience, projects delivered",
-            ]}
-          />
-        )}
-
-        {about.whoWeAre.leadership.length > 0 && (
+        {about.leadership.people.length > 0 && (
           <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {about.whoWeAre.leadership.map((person) => (
+            {about.leadership.people.map((person) => (
               <article key={person.name} className="border-t-2 border-ink pt-6">
                 <h3 className="text-lg font-bold">{person.name}</h3>
                 <p className="mt-1 text-sm uppercase tracking-[0.12em] text-slate">
                   {person.role}
                 </p>
-                <p className="mt-4 text-sm leading-relaxed text-slate">
-                  {person.bio}
-                </p>
+                {person.bio && (
+                  <p className="mt-4 text-sm leading-relaxed text-slate">
+                    {person.bio}
+                  </p>
+                )}
               </article>
             ))}
           </div>
@@ -62,7 +85,7 @@ export default function AboutPage() {
       </Section>
 
       {/* Why BuildPlus Exists */}
-      <Section id="why-buildplus-exists" tone="mist">
+      <Section id="why-buildplus-exists">
         <SectionHeading
           eyebrow={about.whyWeExist.eyebrow}
           title={about.whyWeExist.title}
@@ -82,7 +105,7 @@ export default function AboutPage() {
       </Section>
 
       {/* A Ray White Ltd. Venture */}
-      <Section id="ray-white-venture">
+      <Section id="ray-white-venture" tone="mist">
         <SectionHeading
           eyebrow={about.rayWhiteVenture.eyebrow}
           title={about.rayWhiteVenture.title}
@@ -93,16 +116,15 @@ export default function AboutPage() {
           ))}
         </div>
         <ContentPending
-          label="Ray White Ltd. relationship"
+          label="Ray White Ltd. branding"
           needs={[
-            "The wording you want for the Ray White Ltd. relationship",
-            "Whether the Ray White Ltd. logo should appear, and the logo file",
+            "Whether the Ray White Ltd. logo should appear alongside ours, and the logo file",
           ]}
         />
       </Section>
 
       {/* Our Development Approach */}
-      <Section id="development-approach" tone="mist">
+      <Section id="development-approach">
         <SectionHeading
           eyebrow={about.approach.eyebrow}
           title={about.approach.title}
@@ -124,7 +146,7 @@ export default function AboutPage() {
       </Section>
 
       {/* Our Commitment */}
-      <Section id="our-commitment">
+      <Section id="our-commitment" tone="mist">
         <SectionHeading
           eyebrow={about.commitment.eyebrow}
           title={about.commitment.title}

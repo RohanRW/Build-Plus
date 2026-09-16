@@ -16,31 +16,47 @@ export const site = {
   // sitemap.xml, robots.txt and Open Graph tags.
   url: "https://buildplus.example.com",
 
-  // TODO(content): real office/contact details.
   contact: {
-    phone: "", // e.g. "+880 1XXX XXXXXX"
-    whatsapp: "", // digits only, e.g. "8801XXXXXXXXX"
-    email: "", // e.g. "hello@buildplus.com.bd"
-    addressLines: [], // e.g. ["House 00, Road 00", "Gulshan, Dhaka 1212"]
-    mapsUrl: "",
-    hours: "", // e.g. "Sun – Thu, 9:00 – 18:00"
+    phone: "01843-563338",
+    phoneHref: "tel:+8801843563338",
+    // TODO(content): confirm WhatsApp is the same number as above.
+    whatsapp: "8801843563338",
+    whatsappLabel: "Chat with BuildPlus",
+    email: "rohan@raywhiteltd.com",
+    addressLines: [
+      "Level 5, Suit 605 & 606, Rupayan Shopping Square",
+      "Plot 02 Sayem Sobhan Anvir Rd",
+      "Dhaka 1229, Bangladesh",
+    ],
+    mapsUrl: "https://maps.app.goo.gl/Fu4qGcMe1MN5M6b46",
+    mapsLabel: "Get Directions",
+    hours: "", // TODO(content): office hours, if you want them shown
   },
 
-  // TODO(content): leave a value empty to hide that icon in the footer.
-  social: {
-    facebook: "",
-    instagram: "",
-    linkedin: "",
-    youtube: "",
-  },
+  /**
+   * Only live profiles are listed. Instagram, LinkedIn and YouTube are
+   * deliberately omitted until those pages exist — empty icons look worse
+   * than none at all.
+   */
+  social: [
+    {
+      name: "Facebook",
+      label: "BuildPlus Bangladesh",
+      href: "https://www.facebook.com/BuildPlusBD",
+    },
+  ],
 };
+
+export const whatsappUrl = site.contact.whatsapp
+  ? `https://wa.me/${site.contact.whatsapp}`
+  : "";
 
 export const nav = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Experience", href: "/experience" },
-  { label: "Packages", href: "/packages" },
+  { label: "Development Standards", href: "/development-standards" },
 ];
 
 export const primaryCta = {

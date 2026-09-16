@@ -1,11 +1,10 @@
 import Link from "next/link";
 
 import Logo from "@/components/logo";
-import { nav, primaryCta, site } from "@/content/site";
+import { nav, primaryCta, site, whatsappUrl } from "@/content/site";
 
 export default function SiteFooter() {
   const { contact, social } = site;
-  const socialLinks = Object.entries(social).filter(([, href]) => href);
 
   return (
     <footer className="mt-auto bg-ink text-white/80">
@@ -32,47 +31,63 @@ export default function SiteFooter() {
 
           <div>
             <h2 className="eyebrow !text-white/50">Contact</h2>
-            {/* TODO(content): fill site.contact in src/content/site.js */}
             <ul className="mt-6 space-y-3 text-sm">
-              {contact.phone && (
-                <li>
-                  <a href={`tel:${contact.phone.replace(/\s/g, "")}`} className="transition hover:text-white">
-                    {contact.phone}
-                  </a>
-                </li>
-              )}
-              {contact.email && (
-                <li>
-                  <a href={`mailto:${contact.email}`} className="transition hover:text-white">
-                    {contact.email}
-                  </a>
-                </li>
-              )}
+              <li>
+                <a href={contact.phoneHref} className="transition hover:text-white">
+                  {contact.phone}
+                </a>
+              </li>
+              <li>
+                <a href={`mailto:${contact.email}`} className="transition hover:text-white">
+                  {contact.email}
+                </a>
+              </li>
               {contact.addressLines.map((line) => (
-                <li key={line}>{line}</li>
+                <li key={line} className="text-white/60">
+                  {line}
+                </li>
               ))}
-              {contact.hours && <li>{contact.hours}</li>}
-              {!contact.phone && !contact.email && contact.addressLines.length === 0 && (
-                <li className="text-white/40">Contact details pending.</li>
-              )}
+              {contact.hours && <li className="text-white/60">{contact.hours}</li>}
             </ul>
 
-            {socialLinks.length > 0 && (
-              <ul className="mt-6 flex gap-4 text-sm">
-                {socialLinks.map(([name, href]) => (
-                  <li key={name}>
-                    <a
-                      href={href}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="capitalize transition hover:text-white"
-                    >
-                      {name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            )}
+            <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+              {contact.mapsUrl && (
+                <li>
+                  <a
+                    href={contact.mapsUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="transition hover:text-white"
+                  >
+                    {contact.mapsLabel}
+                  </a>
+                </li>
+              )}
+              {whatsappUrl && (
+                <li>
+                  <a
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="transition hover:text-white"
+                  >
+                    WhatsApp
+                  </a>
+                </li>
+              )}
+              {social.map((profile) => (
+                <li key={profile.name}>
+                  <a
+                    href={profile.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="transition hover:text-white"
+                  >
+                    {profile.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 

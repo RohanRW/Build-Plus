@@ -223,20 +223,23 @@ export const home = {
 
   developmentExperience: {
     eyebrow: "Development Experience",
-    title: "Delivered projects",
-    // TODO(content): this teaser pulls from src/content/experience.js.
-    // Set how many projects to feature on the home page.
+    title: "Development Experience Behind BuildPlus",
+    intro:
+      "BuildPlus is backed by the development experience of Ray White Ltd. Selected developments below represent the architectural, engineering, project-management and construction expertise supporting the venture.",
+    // Cards pull from src/content/experience.js.
     featuredCount: 3,
     ctaLabel: "View our experience",
     ctaHref: "/experience",
   },
 
-  packagesTeaser: {
-    eyebrow: "Packages",
-    title: "Four standards. One accountable partner.",
-    // Cards pull from src/content/packages.js.
-    ctaLabel: "Compare packages",
-    ctaHref: "/packages",
+  standardsTeaser: {
+    eyebrow: "Development Standards",
+    title: "Specification levels, matched to your objectives",
+    body:
+      "BuildPlus offers different levels of architectural specification, materials, finishes and building systems depending on the landowner's objectives, project type and investment plan.",
+    // Cards pull from src/content/standards.js.
+    ctaLabel: "View development standards",
+    ctaHref: "/development-standards",
   },
 
   landownerCta: {

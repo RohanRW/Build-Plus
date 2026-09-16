@@ -36,7 +36,7 @@ Routes map to the agreed sitemap:
 | `/about` | About Us |
 | `/services` | Services |
 | `/experience` | Experience |
-| `/packages` | Packages |
+| `/development-standards` | Development Standards |
 | `/discuss-your-land` | Discuss Your Land (landowner form) |
 
 ## Editing content
@@ -45,7 +45,7 @@ No page file contains copy. Everything is in `src/content/`:
 
 - `site.js` — brand strings, navigation, contact details, social links
 - `home.js` — all eight home page sections
-- `about.js`, `services.js`, `experience.js`, `packages.js`
+- `about.js`, `services.js`, `experience.js`, `standards.js`
 
 Anything still awaiting client input is marked `TODO(content)`,
 `TODO(assets)` or `TODO(brand)`. List them with:
@@ -62,7 +62,7 @@ listing exactly what is needed, so nothing is silently missing.
 1. In Google Cloud, create a project, enable the **Google Sheets API**, and
    create a **service account**. Generate a JSON key.
 2. Create the spreadsheet. Add a tab named `Enquiries` with the header row:
-   `Timestamp | Name | Phone | Land Location | Land Size | Unit | Type | Package`
+   `Timestamp | Name | Phone | Land Location | Land Size | Unit | Type | Development Standard`
 3. Share the spreadsheet with the service account's email address, as
    **Editor**.
 4. Fill `.env.local`:

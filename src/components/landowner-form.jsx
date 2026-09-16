@@ -7,7 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import {
   LAND_SIZE_UNITS,
   LAND_TYPES,
-  PACKAGE_OPTIONS,
+  STANDARD_OPTIONS,
   landownerDefaults,
   landownerSchema,
 } from "@/lib/landowner-schema";
@@ -17,7 +17,7 @@ const fieldClass =
 const labelClass = "mb-2 block text-sm font-medium text-ink";
 const errorClass = "mt-2 block text-sm text-red-700";
 
-export default function LandownerForm() {
+export default function LandownerForm({ initialStandard = "" }) {
   const [status, setStatus] = useState({ state: "idle", message: "" });
 
   const {
@@ -27,7 +27,7 @@ export default function LandownerForm() {
     formState: { errors, isSubmitting },
   } = useForm({
     resolver: zodResolver(landownerSchema),
-    defaultValues: landownerDefaults,
+    defaultValues: { ...landownerDefaults, standard: initialStandard },
   });
 
   async function onSubmit(values) {
@@ -51,7 +51,7 @@ export default function LandownerForm() {
         return;
       }
 
-      reset(landownerDefaults);
+      reset({ ...landownerDefaults, standard: initialStandard });
       setStatus({
         state: "success",
         message:
@@ -187,27 +187,26 @@ export default function LandownerForm() {
         </div>
 
         <div>
-          <label className={labelClass} htmlFor="package">
-            Package <span className="text-slate">*</span>
+          <label className={labelClass} htmlFor="standard">
+            Development Standard <span className="text-slate">*</span>
           </label>
           <select
-            id="package"
+            id="standard"
             className={fieldClass}
-            defaultValue=""
-            aria-invalid={Boolean(errors.package)}
-            {...register("package")}
+            aria-invalid={Boolean(errors.standard)}
+            {...register("standard")}
           >
             <option value="" disabled>
-              Select package
+              Select standard
             </option>
-            {PACKAGE_OPTIONS.map((option) => (
+            {STANDARD_OPTIONS.map((option) => (
               <option key={option} value={option}>
                 {option}
               </option>
             ))}
           </select>
-          {errors.package && (
-            <span className={errorClass}>{errors.package.message}</span>
+          {errors.standard && (
+            <span className={errorClass}>{errors.standard.message}</span>
           )}
         </div>
       </div>

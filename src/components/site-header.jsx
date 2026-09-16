@@ -18,7 +18,7 @@ export default function SiteHeader() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
         <Logo />
 
-        <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-6 xl:flex" aria-label="Primary">
           {nav.map((item) => {
             const active =
               item.href === "/"
@@ -30,7 +30,7 @@ export default function SiteHeader() {
                 key={item.href}
                 href={item.href}
                 aria-current={active ? "page" : undefined}
-                className={`text-sm font-medium uppercase tracking-[0.12em] transition hover:text-ink ${
+                className={`whitespace-nowrap text-xs font-medium uppercase tracking-[0.1em] transition hover:text-ink ${
                   active ? "text-ink" : "text-slate"
                 }`}
               >
@@ -41,7 +41,7 @@ export default function SiteHeader() {
 
           <Link
             href={primaryCta.href}
-            className="bg-ink px-6 py-3 text-xs font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-charcoal"
+            className="whitespace-nowrap bg-ink px-6 py-3 text-xs font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-charcoal"
           >
             {primaryCta.label}
           </Link>
@@ -53,7 +53,7 @@ export default function SiteHeader() {
           aria-expanded={open}
           aria-controls="mobile-nav"
           aria-label={open ? "Close menu" : "Open menu"}
-          className="lg:hidden"
+          className="xl:hidden"
         >
           {open ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -63,7 +63,7 @@ export default function SiteHeader() {
         <nav
           id="mobile-nav"
           aria-label="Primary"
-          className="border-t border-line bg-canvas lg:hidden"
+          className="border-t border-line bg-canvas xl:hidden"
         >
           <div className="mx-auto flex max-w-6xl flex-col px-4 py-2 sm:px-6">
             {nav.map((item) => (

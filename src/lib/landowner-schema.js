@@ -12,7 +12,7 @@ import { z } from "zod";
 
 export const LAND_TYPES = ["Residential", "Commercial", "Mixed Use"];
 
-export const PACKAGE_OPTIONS = [
+export const STANDARD_OPTIONS = [
   "Essential",
   "Standard",
   "Premium",
@@ -63,8 +63,8 @@ export const landownerSchema = z.object({
     message: "Please choose the type of development.",
   }),
 
-  package: z.enum(PACKAGE_OPTIONS, {
-    message: "Please choose a package.",
+  standard: z.enum(STANDARD_OPTIONS, {
+    message: "Please choose a development standard.",
   }),
 
   // Hidden field. Real people leave it empty; bots fill it in.
@@ -78,6 +78,6 @@ export const landownerDefaults = {
   landSize: "",
   landSizeUnit: "Katha",
   landType: "",
-  package: "",
+  standard: "",
   website: "",
 };

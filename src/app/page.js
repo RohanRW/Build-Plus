@@ -1,12 +1,13 @@
 import Link from "next/link";
 
 import { ContentPending, Section, SectionHeading } from "@/components/section";
+import ProjectCard from "@/components/project-card";
 import { home } from "@/content/home";
 import { experience } from "@/content/experience";
-import { packages } from "@/content/packages";
+import { standards } from "@/content/standards";
 
 export default function HomePage() {
-  const featured = experience.buildPlusProjects.projects.slice(
+  const featured = experience.rayWhiteDevelopments.projects.slice(
     0,
     home.developmentExperience.featuredCount,
   );
@@ -167,28 +168,20 @@ export default function HomePage() {
         <SectionHeading
           eyebrow={home.developmentExperience.eyebrow}
           title={home.developmentExperience.title}
+          body={home.developmentExperience.intro}
         />
 
-        {featured.length > 0 ? (
-          <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {featured.map((project) => (
-              <article key={project.slug} className="border border-line p-6">
-                <h3 className="text-lg font-bold">{project.name}</h3>
-                <p className="mt-2 text-sm text-slate">{project.location}</p>
-              </article>
-            ))}
-          </div>
-        ) : (
-          <ContentPending
-            label="Featured projects"
-            needs={[
-              "Project names, locations and types",
-              "Land area, built-up area and number of floors",
-              "Year and status (completed / ongoing)",
-              "At least one photo or render per project",
-            ]}
-          />
-        )}
+        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {featured.map((project) => (
+            <ProjectCard
+              key={project.slug}
+              project={project}
+              developerLabel={
+                experience.rayWhiteDevelopments.developerLabel
+              }
+            />
+          ))}
+        </div>
 
         <Link
           href={home.developmentExperience.ctaHref}
@@ -198,15 +191,16 @@ export default function HomePage() {
         </Link>
       </Section>
 
-      {/* Packages */}
-      <Section id="packages" tone="mist">
+      {/* Development Standards */}
+      <Section id="development-standards" tone="mist">
         <SectionHeading
-          eyebrow={home.packagesTeaser.eyebrow}
-          title={home.packagesTeaser.title}
+          eyebrow={home.standardsTeaser.eyebrow}
+          title={home.standardsTeaser.title}
+          body={home.standardsTeaser.body}
         />
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {packages.tiers.map((tier) => (
+          {standards.tiers.map((tier) => (
             <article
               key={tier.slug}
               className={`border p-6 ${tier.featured ? "border-ink" : "border-line"}`}
@@ -214,27 +208,18 @@ export default function HomePage() {
               <h3 className="font-display text-2xl font-bold uppercase">
                 {tier.name}
               </h3>
-              <p className="mt-3 text-sm text-slate">
-                {tier.positioning || "Positioning pending."}
+              <p className="mt-3 text-sm leading-relaxed text-slate">
+                {tier.positioning}
               </p>
             </article>
           ))}
         </div>
 
-        <ContentPending
-          label="Package tiers"
-          needs={[
-            "A one-line positioning statement per tier",
-            "Inclusions per tier (structure, finishes, fittings, MEP, common areas)",
-            "Indicative per-sft range, or confirm 'price on request'",
-          ]}
-        />
-
         <Link
-          href={home.packagesTeaser.ctaHref}
+          href={home.standardsTeaser.ctaHref}
           className="mt-10 inline-flex border border-ink px-8 py-4 text-sm font-semibold uppercase tracking-[0.18em] transition hover:bg-ink hover:text-white"
         >
-          {home.packagesTeaser.ctaLabel}
+          {home.standardsTeaser.ctaLabel}
         </Link>
       </Section>
 
