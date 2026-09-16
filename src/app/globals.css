@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+/*
+ * BuildPlus brand tokens.
+ *
+ * TODO(brand): the accent colour is a PLACEHOLDER. The supplied logo is
+ * monochrome charcoal, and no accent has been confirmed yet. Change
+ * --bp-accent here and it updates site-wide.
+ */
+:root {
+  --bp-charcoal: #3f3f3f; /* sampled from the logo wordmark */
+  --bp-ink: #1b1b1b;
+  --bp-slate: #6b6b6b;
+  --bp-line: #e3e3e3;
+  --bp-mist: #f6f6f5;
+  --bp-canvas: #ffffff;
+  --bp-accent: #b08d57; /* PLACEHOLDER bronze — confirm or remove */
+
+  --background: var(--bp-canvas);
+  --foreground: var(--bp-ink);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-charcoal: var(--bp-charcoal);
+  --color-ink: var(--bp-ink);
+  --color-slate: var(--bp-slate);
+  --color-line: var(--bp-line);
+  --color-mist: var(--bp-mist);
+  --color-canvas: var(--bp-canvas);
+  --color-accent: var(--bp-accent);
+
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display), var(--font-body), sans-serif;
+  letter-spacing: -0.01em;
+}
+
+/* The logo lockup and section eyebrows use wide tracked caps. */
+.eyebrow {
+  font-family: var(--font-display), sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--bp-slate);
+}
+
+/* Marks a block whose copy is still pending from the client. */
+.pending {
+  border: 1px dashed var(--bp-line);
+  background: var(--bp-mist);
+  color: var(--bp-slate);
+}
