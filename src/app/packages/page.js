@@ -15,7 +15,7 @@ export const metadata = {
 
 export default function PackagesPage() {
   return (
-    <>
+    <div className="page-packages">
       <PageHero
         eyebrow={packages.hero.eyebrow}
         title={packages.hero.title}
@@ -144,6 +144,6 @@ export default function PackagesPage() {
           </p>
         </Reveal>
       </Section>
-    </>
+    </div>
   );
 }

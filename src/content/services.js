@@ -12,31 +12,50 @@ export const services = {
   models: [
     {
       slug: "complete-turnkey",
-      option: "Option B",
+      option: "Option A",
       name: "Complete Turnkey",
       summary:
-        "We manage the project from feasibility and design through construction, finishing and final handover.",
-      // TODO(content): confirm the inclusion list for each model.
-      includes: [],
-      bestFor: "", // TODO(content)
+        "We handle the entire project from concept to final handover — design, planning, engineering, construction, quality control, coordination and completion. You receive a fully completed building.",
+      includes: [
+        "Concept and architectural design",
+        "Engineering and approvals",
+        "Construction and site management",
+        "Quality control and coordination",
+        "Final handover of a completed building",
+      ],
+      bestFor:
+        "Landowners who want one accountable partner managing the entire process, start to finish.",
     },
     {
-      slug: "design-and-build",
-      option: "Option A",
-      name: "Design & Build",
+      slug: "construction",
+      option: "Option B",
+      name: "Construction",
       summary:
-        "We design, engineer and construct the building under an agreed commercial structure.",
-      includes: [],
-      bestFor: "",
+        "You already have the design and plans. We handle the construction and execution, ensuring quality, proper management and completion according to the approved design.",
+      includes: [
+        "Construction against your approved design",
+        "Site and contractor management",
+        "Quality assurance and quality control",
+        "Schedule and cost monitoring",
+        "Completion and handover",
+      ],
+      bestFor:
+        "Landowners with an approved design who need professional construction execution.",
     },
     {
-      slug: "development-management",
+      slug: "consultancy-and-project-management",
       option: "Option C",
-      name: "Development Management",
+      name: "Consultancy & Project Management",
       summary:
-        "We act as the owner's professional development manager and coordinate consultants, procurement, construction, cost and delivery.",
-      includes: [],
-      bestFor: "",
+        "We do not directly construct the project. We act as your professional consultant — providing guidance, technical advice, coordination, quality monitoring, cost and schedule oversight, and project supervision.",
+      includes: [
+        "Technical advice and guidance",
+        "Coordination of consultants and contractors",
+        "Quality monitoring and supervision",
+        "Cost and schedule oversight",
+      ],
+      bestFor:
+        "Landowners who have their own contractor but want professional oversight and accountability.",
     },
   ],
 

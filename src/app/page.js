@@ -1,11 +1,10 @@
 import Link from "next/link";
-import { ArrowRight, Check, Minus } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 
 import Hero from "@/components/hero";
 import Reveal from "@/components/reveal";
 import { Section, SectionHeading } from "@/components/section";
 import ProjectCard from "@/components/project-card";
-import { LogoMark } from "@/components/logo";
 import { home } from "@/content/home";
 import { experience } from "@/content/experience";
 import { packages } from "@/content/packages";
@@ -17,7 +16,7 @@ export default function HomePage() {
   );
 
   return (
-    <>
+    <div className="page-home">
       <Hero />
 
       {/* Backing + the figures behind the venture */}
@@ -44,68 +43,7 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* What We Do */}
-      <Section id="what-we-do" tone="mist">
-        <SectionHeading
-          eyebrow={home.whatWeDo.eyebrow}
-          title={home.whatWeDo.title}
-          body={home.whatWeDo.body}
-        />
-
-        <div className="mt-14 grid gap-px bg-line md:grid-cols-2">
-          <Reveal className="bg-mist p-8 sm:p-10">
-            <h3 className="eyebrow">Instead of managing</h3>
-            <ul className="mt-7 space-y-3">
-              {home.whatWeDo.insteadOfManaging.map((item) => (
-                <li
-                  key={item}
-                  className="flex items-center gap-3 text-slate line-through decoration-line"
-                >
-                  <Minus size={14} className="shrink-0 text-line" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-
-          <Reveal delay={0.1} className="bg-black p-8 text-white sm:p-10">
-            <h3 className="eyebrow !text-white/50">You deal with</h3>
-            <p className="mt-7 text-2xl font-extrabold leading-tight sm:text-3xl">
-              {home.whatWeDo.youDealWith}
-            </p>
-            <p className="mt-6 leading-relaxed text-white/60">
-              {home.whatWeDo.ownershipNote}
-            </p>
-            <LogoMark variant="light" className="mt-10 h-14 w-auto opacity-25" />
-          </Reveal>
-        </div>
-
-        {/* Your Land + Your Investment + Our Expertise = Your Completed Building */}
-        <Reveal
-          as="ul"
-          delay={0.15}
-          className="mt-14 flex flex-wrap items-center gap-x-5 gap-y-4 text-lg font-extrabold uppercase tracking-tight sm:text-2xl"
-        >
-          {home.whatWeDo.equation.map((part, index) => {
-            const last = index === home.whatWeDo.equation.length - 1;
-
-            return (
-              <li key={part} className="flex items-center gap-5">
-                <span className={last ? "border-b-4 border-ink pb-1" : ""}>
-                  {part}
-                </span>
-                {!last && (
-                  <span className="text-2xl font-light text-slate sm:text-3xl">
-                    {index === home.whatWeDo.equation.length - 2 ? "=" : "+"}
-                  </span>
-                )}
-              </li>
-            );
-          })}
-        </Reveal>
-      </Section>
-
-      {/* How It Works */}
+      {/* What We Do (formerly "How It Works") */}
       <Section id="how-it-works">
         <SectionHeading
           eyebrow={home.howItWorks.eyebrow}
@@ -323,6 +261,6 @@ export default function HomePage() {
           </Reveal>
         </div>
       </Section>
-    </>
+    </div>
   );
 }

@@ -1,4 +1,6 @@
-import { ContentPending, Section, SectionHeading } from "@/components/section";
+import Image from "next/image";
+
+import { Section, SectionHeading } from "@/components/section";
 import PageHero from "@/components/page-hero";
 import Reveal from "@/components/reveal";
 import { about } from "@/content/about";
@@ -7,12 +9,12 @@ import { home } from "@/content/home";
 export const metadata = {
   title: "About Us",
   description:
-    "BuildPlus is a development partner for landowners, backed by the team behind Ray White Ltd.'s luxury-development experience.",
+    "Build Plus is a development partner for landowners, backed by the team behind Ray White Ltd.'s luxury-development experience.",
 };
 
 export default function AboutPage() {
   return (
-    <>
+    <div className="page-about">
       <PageHero
         eyebrow={about.hero.eyebrow}
         title={about.hero.title}
@@ -124,57 +126,32 @@ export default function AboutPage() {
         </ol>
       </Section>
 
-      {/* Leadership & Professional Team */}
-      <Section id="leadership">
-        <SectionHeading
-          eyebrow={about.leadership.eyebrow}
-          title={about.leadership.title}
-          body={about.leadership.body}
-        />
-
-        {about.leadership.people.length > 0 && (
-          <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {about.leadership.people.map((person, index) => (
-              <Reveal
-                as="article"
-                key={person.name}
-                delay={(index % 3) * 0.08}
-                className="border-t-2 border-ink pt-6"
-              >
-                <h3 className="text-lg font-bold">{person.name}</h3>
-                <p className="mt-1 text-xs uppercase tracking-[0.14em] text-slate">
-                  {person.role}
-                </p>
-                {person.bio && (
-                  <p className="mt-4 text-sm leading-relaxed text-slate">
-                    {person.bio}
-                  </p>
-                )}
-              </Reveal>
-            ))}
-          </div>
-        )}
-      </Section>
-
       {/* A Ray White Ltd. Venture */}
       <Section id="ray-white-venture" tone="mist">
         <SectionHeading
           eyebrow={about.rayWhiteVenture.eyebrow}
           title={about.rayWhiteVenture.title}
         />
-        <Reveal delay={0.1}>
-          <div className="mt-8 max-w-3xl space-y-6 text-base leading-relaxed text-slate sm:text-lg">
-            {about.rayWhiteVenture.paragraphs.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-          </div>
-          <ContentPending
-            label="Ray White Ltd. branding"
-            needs={[
-              "Whether the Ray White Ltd. logo should appear alongside ours, and the logo file",
-            ]}
-          />
-        </Reveal>
+        <div className="mt-8 grid gap-10 lg:grid-cols-[1fr_auto] lg:items-center lg:gap-16">
+          <Reveal delay={0.1}>
+            <div className="max-w-3xl space-y-6 text-base leading-relaxed text-slate sm:text-lg">
+              {about.rayWhiteVenture.paragraphs.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
+          </Reveal>
+          <Reveal delay={0.15} className="shrink-0">
+            <div className="inline-flex bg-canvas p-6">
+              <Image
+                src="/RayWhiteLogo.png"
+                alt="Ray White Ltd. Real Estate"
+                width={2160}
+                height={2160}
+                className="h-28 w-28 object-contain sm:h-32 sm:w-32"
+              />
+            </div>
+          </Reveal>
+        </div>
       </Section>
 
       {/* Our Commitment */}
@@ -214,6 +191,6 @@ export default function AboutPage() {
           ))}
         </div>
       </Section>
-    </>
+    </div>
   );
 }

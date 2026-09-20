@@ -19,11 +19,12 @@ export default function ExperiencePage() {
   const projects = rayWhiteDevelopments.projects;
 
   return (
-    <>
+    <div className="page-experience">
       <PageHero
         eyebrow={experience.hero.eyebrow}
         title={experience.hero.title}
         body={experience.hero.body}
+        cta={{ label: "Visit Ray White Ltd.", href: "https://raywhiteltd.com/" }}
       />
 
       {/* Development Experience Behind BuildPlus */}
@@ -71,6 +72,6 @@ export default function ExperiencePage() {
           </Reveal>
         </div>
       </Section>
-    </>
+    </div>
   );
 }

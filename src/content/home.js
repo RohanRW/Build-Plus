@@ -70,35 +70,8 @@ export const home = {
     showParentLogo: false, // TODO(assets): supply the Ray White Ltd. logo to enable
   },
 
-  whatWeDo: {
-    eyebrow: "What We Do",
-    title: "A development partner for landowners",
-    body:
-      "Developing a building requires much more than hiring a contractor. It requires architectural planning, engineering, approvals, budgeting, procurement, construction supervision, quality control, finishing and coordination among many different professionals.",
-    insteadOfManaging: [
-      "Architect",
-      "Structural Engineer",
-      "MEP Consultant",
-      "Approval Process",
-      "Contractor",
-      "Suppliers",
-      "Subcontractors",
-      "Site Engineers",
-      "Interior & Finishing Teams",
-    ],
-    youDealWith: "One professional development partner — BuildPlus.",
-    ownershipNote:
-      "Your land remains yours. You appoint BuildPlus to professionally develop the building on your behalf under the agreed contract structure.",
-    equation: [
-      "Your Land",
-      "Your Investment",
-      "Our Expertise",
-      "Your Completed Building",
-    ],
-  },
-
   howItWorks: {
-    eyebrow: "How It Works",
+    eyebrow: "What We Do",
     title: "Our complete service",
     intro:
       "From the first concept to final handover, one professional team manages the entire development process for you.",

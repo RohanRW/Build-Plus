@@ -1,45 +1,41 @@
 @import "tailwindcss";
+@import "./colors.css";
 
 /*
- * BuildPlus brand tokens.
- *
- * The palette is deliberately monochrome: pure black, the charcoal grey
- * sampled from the logo, light greys and white. No accent colour — the
- * brand's contrast comes from black against white and from photography.
+ * Registers every color token from colors.css as a Tailwind utility
+ * (bg-*, text-*, border-*, ...). The color VALUES live in colors.css —
+ * this block only ever needs new lines added when a brand-new token is
+ * introduced there, never edits to change an actual color.
  */
-:root {
-  --bp-black: #000000; /* pure black — primary ink and dark sections */
-  --bp-ink: #000000;
-  --bp-carbon: #0d0d0d; /* raised surfaces inside black sections */
-  --bp-charcoal: #3f3f3f; /* sampled from the logo wordmark */
-  --bp-slate: #6f6f6f; /* body copy on light backgrounds */
-  --bp-line: #e4e4e4; /* light grey hairlines */
-  --bp-mist: #f4f4f4; /* light grey surface */
-  --bp-canvas: #ffffff;
-
-  --background: var(--bp-canvas);
-  --foreground: var(--bp-ink);
-}
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  --color-black: var(--bp-black);
-  --color-ink: var(--bp-ink);
-  --color-carbon: var(--bp-carbon);
-  --color-charcoal: var(--bp-charcoal);
-  --color-slate: var(--bp-slate);
-  --color-line: var(--bp-line);
-  --color-mist: var(--bp-mist);
-  --color-canvas: var(--bp-canvas);
+  --color-black: var(--role-primary);
+  --color-ink: var(--role-text);
+  --color-carbon: #99995b; /* raised surfaces inside black sections — no --role- equivalent yet */
+  --color-charcoal: var(--role-secondary);
+  --color-slate: var(--role-muted);
+  --color-line: var(--role-border);
+  --color-mist: var(--role-surface);
+  --color-canvas: var(--background);
+
+  --color-primary: var(--role-primary);
+  --color-secondary: var(--role-secondary);
+  --color-accent: var(--role-accent);
+  --color-surface: var(--role-surface);
+  --color-text: var(--role-text);
+  --color-muted: var(--role-muted);
+  --color-border: var(--role-border);
+  --color-button: var(--role-button);
+  --color-button-hover: var(--role-button-hover);
 
   --font-sans: var(--font-montserrat);
   --font-display: var(--font-montserrat);
 }
 
 * {
-  border-color: var(--bp-line);
+  border-color: var(--role-border);
 }
 
 html {
@@ -63,7 +59,7 @@ h4 {
 }
 
 ::selection {
-  background: var(--bp-black);
+  background: var(--role-primary);
   color: #ffffff;
 }
 
@@ -73,7 +69,7 @@ h4 {
   letter-spacing: 0.3em;
   font-size: 0.68rem;
   font-weight: 600;
-  color: var(--bp-slate);
+  color: var(--role-muted);
 }
 
 /* Display headings: tight, heavy, uppercase — the wordmark's voice. */
@@ -87,14 +83,14 @@ h4 {
 /* A thin rule that draws itself in as a section opens. */
 .rule {
   height: 1px;
-  background: var(--bp-line);
+  background: var(--role-border);
 }
 
 /* Marks a block whose copy is still pending from the client. */
 .pending {
-  border: 1px dashed var(--bp-line);
-  background: var(--bp-mist);
-  color: var(--bp-slate);
+  border: 1px dashed var(--role-border);
+  background: var(--role-surface);
+  color: var(--role-muted);
 }
 
 /* Continuous capability strip under the hero. */

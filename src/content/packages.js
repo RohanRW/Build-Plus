@@ -109,8 +109,7 @@ export const packages = {
         "Higher-level detailing and finish supervision",
         "Enhanced QA/QC",
       ],
-      // TODO(content): confirm which package should carry the emphasis.
-      featured: true,
+      featured: false,
     },
     {
       slug: "luxury",

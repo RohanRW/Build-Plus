@@ -11,7 +11,7 @@ import { primaryCta } from "@/content/site";
 export const metadata = {
   title: "Services",
   description:
-    "Complete Turnkey, Design & Build, or Development Management — the project is structured around the landowner's requirements.",
+    "Complete Turnkey, Construction, or Consultancy & Project Management — the project is structured around the landowner's requirements.",
 };
 
 export default function ServicesPage() {
@@ -20,7 +20,7 @@ export default function ServicesPage() {
   );
 
   return (
-    <>
+    <div className="page-services">
       <PageHero
         eyebrow={services.hero.eyebrow}
         title={services.hero.title}
@@ -36,13 +36,30 @@ export default function ServicesPage() {
               key={model.slug}
               id={model.slug}
               delay={index * 0.08}
-              className="group flex scroll-mt-28 flex-col bg-canvas p-8 transition-colors duration-300 hover:bg-mist sm:p-10"
+              className="group tone-canvas flex scroll-mt-28 flex-col bg-[var(--section-bg)] p-8 transition-colors duration-300 hover:bg-mist sm:p-10"
             >
-              <p className="eyebrow !text-[0.6rem]">{model.option}</p>
-              <h2 className="mt-4 text-2xl font-extrabold uppercase tracking-tight sm:text-3xl">
+              <p
+                className="text-[0.6rem] font-semibold uppercase tracking-[0.3em] text-[var(--section-accent-color)]"
+                style={{ fontFamily: "var(--section-body-font)" }}
+              >
+                {model.option}
+              </p>
+              <h2
+                className="mt-4 text-2xl uppercase tracking-tight text-[var(--section-heading-color)] sm:text-3xl"
+                style={{
+                  fontFamily: "var(--section-heading-font)",
+                  fontWeight: "var(--section-heading-weight)",
+                }}
+              >
                 {model.name}
               </h2>
-              <p className="mt-5 flex-1 leading-relaxed text-slate">
+              <p
+                className="mt-5 flex-1 leading-relaxed text-[var(--section-body-color)]"
+                style={{
+                  fontFamily: "var(--section-body-font)",
+                  fontWeight: "var(--section-body-weight)",
+                }}
+              >
                 {model.summary}
               </p>
 
@@ -51,7 +68,8 @@ export default function ServicesPage() {
                   {model.includes.map((item) => (
                     <li
                       key={item}
-                      className="border-t border-line pt-2.5 text-slate"
+                      className="border-t pt-2.5 text-[var(--section-body-color)]"
+                      style={{ borderColor: "var(--section-border-color)" }}
                     >
                       {item}
                     </li>
@@ -60,15 +78,20 @@ export default function ServicesPage() {
               )}
 
               {model.bestFor && (
-                <p className="mt-7 border-l-2 border-ink pl-5 text-sm text-slate">
-                  <span className="font-semibold text-ink">Best for: </span>
+                <p
+                  className="mt-7 border-l-2 pl-5 text-sm text-[var(--section-body-color)]"
+                  style={{ borderColor: "var(--section-heading-color)" }}
+                >
+                  <span className="font-semibold text-[var(--section-heading-color)]">
+                    Best for:{" "}
+                  </span>
                   {model.bestFor}
                 </p>
               )}
 
               <Link
                 href={primaryCta.href}
-                className="mt-8 inline-flex items-center gap-2 text-[0.7rem] font-bold uppercase tracking-[0.16em] text-ink"
+                className="mt-8 inline-flex items-center gap-2 text-[0.7rem] font-bold uppercase tracking-[0.16em] text-[var(--section-heading-color)]"
               >
                 Discuss this option
                 <ArrowRight
@@ -153,6 +176,6 @@ export default function ServicesPage() {
           </Link>
         </Reveal>
       </Section>
-    </>
+    </div>
   );
 }

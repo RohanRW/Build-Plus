@@ -1,8 +1,7 @@
 import Link from "next/link";
-import { ArrowDown, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import { home } from "@/content/home";
-import { site } from "@/content/site";
 
 /**
  * Home hero.
@@ -12,6 +11,11 @@ import { site } from "@/content/site";
  * stylesheet drops the video entirely for visitors who prefer reduced
  * motion — so no JavaScript is involved in either case, and the headline
  * is readable the moment the HTML lands.
+ *
+ * Every color and font here reads from the --hero-* tokens in
+ * src/app/colors.css, which are deliberately independent of the site's
+ * general brand/role theme tokens — recoloring global body text never
+ * touches this component; edit the --hero-* block instead.
  */
 export default function Hero() {
   const { hero, capabilities } = home;
@@ -19,7 +23,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative isolate flex min-h-[88svh] flex-col justify-end overflow-hidden bg-black text-white"
+      className="relative isolate flex min-h-[88svh] flex-col justify-end overflow-hidden bg-[var(--hero-bg)] text-[var(--hero-body-color)]"
     >
       {/* Poster + video */}
       <div
@@ -48,20 +52,32 @@ export default function Hero() {
       />
 
       <div className="mx-auto w-full max-w-6xl px-5 pb-16 pt-36 sm:px-6 sm:pb-20 sm:pt-44">
-        <p className="rise eyebrow !text-white/70" style={{ "--rise-delay": "0.05s" }}>
+        <p
+          className="rise flex items-center gap-3 text-[0.68rem] font-semibold uppercase tracking-[0.3em] text-[var(--hero-accent-color)]"
+          style={{ "--rise-delay": "0.05s", fontFamily: "var(--hero-font-family)" }}
+        >
           {hero.eyebrow}
         </p>
 
         <h1
-          className="rise display mt-6 max-w-4xl text-[2.75rem] leading-[0.94] sm:text-7xl lg:text-[5.5rem]"
-          style={{ "--rise-delay": "0.15s" }}
+          className="rise mt-6 max-w-4xl uppercase leading-[0.96] tracking-tight text-[var(--hero-title-color)]"
+          style={{
+            "--rise-delay": "0.15s",
+            fontFamily: "var(--hero-font-family)",
+            fontSize: "var(--hero-title-size)",
+            fontWeight: "var(--hero-font-weight)",
+          }}
         >
           {hero.title}
         </h1>
 
         <p
-          className="rise mt-8 max-w-2xl text-base leading-relaxed text-white/75 sm:text-lg"
-          style={{ "--rise-delay": "0.28s" }}
+          className="rise mt-8 max-w-2xl leading-relaxed text-[var(--hero-body-color)]"
+          style={{
+            "--rise-delay": "0.28s",
+            fontFamily: "var(--hero-font-family)",
+            fontSize: "var(--hero-text-size)",
+          }}
         >
           {hero.body}
         </p>
@@ -72,7 +88,11 @@ export default function Hero() {
         >
           <Link
             href={home.landownerCta.ctaHref}
-            className="group inline-flex items-center gap-3 bg-white px-8 py-4 text-xs font-bold uppercase tracking-[0.18em] text-ink transition hover:bg-white/85"
+            className="group inline-flex items-center gap-3 px-8 py-4 text-xs font-bold uppercase tracking-[0.18em] transition hover:opacity-85"
+            style={{
+              backgroundColor: "var(--hero-button-bg)",
+              color: "var(--hero-button-text)",
+            }}
           >
             {home.landownerCta.ctaLabel}
             <ArrowRight
@@ -82,25 +102,14 @@ export default function Hero() {
           </Link>
           <Link
             href={hero.secondaryCtaHref}
-            className="inline-flex items-center gap-3 border border-white/35 px-8 py-4 text-xs font-bold uppercase tracking-[0.18em] text-white transition hover:border-white hover:bg-white/10"
+            className="inline-flex items-center gap-3 border px-8 py-4 text-xs font-bold uppercase tracking-[0.18em] transition hover:bg-white/10"
+            style={{
+              borderColor: "var(--hero-accent-color)",
+              color: "var(--hero-title-color)",
+            }}
           >
             {hero.secondaryCtaLabel}
           </Link>
-        </div>
-
-        <div
-          className="rise mt-16 flex items-center gap-3 text-[0.68rem] uppercase tracking-[0.24em] text-white/45"
-          style={{ "--rise-delay": "0.55s" }}
-        >
-          <ArrowDown size={14} className="scroll-cue" />
-          <span>Scroll</span>
-          <span aria-hidden="true" className="h-px w-16 bg-white/25" />
-          <a
-            href={site.contact.phoneHref}
-            className="hidden transition hover:text-white sm:inline"
-          >
-            {site.contact.phone}
-          </a>
         </div>
       </div>
 

@@ -1,0 +1,152 @@
+/*
+ * BuildPlus theme system — the ONE file to edit to re-theme the site.
+ *
+ * THREE independent layers, in cascade order:
+ *
+ *   1. Semantic tokens (--role-*)    the raw color values, named by
+ *                                    role (primary, surface, ...). This is
+ *                                    the GLOBAL DEFAULT layer that ordinary
+ *                                    body text/backgrounds read from.
+ *   2. Header tokens    (--header-*) and
+ *      Hero tokens      (--hero-*)   are DELIBERATELY DISCONNECTED from
+ *                                    layer 1. Changing global text/
+ *                                    background colors never touches the
+ *                                    header or the homepage hero slider —
+ *                                    edit their own block below instead.
+ *   3. Section tokens   (--section-*) the page/section override system.
+ *                                    Every major section on every page
+ *                                    reads its background, heading/body
+ *                                    color+type, accent and border from
+ *                                    these — see part 3 for how to target
+ *                                    one page or one section only.
+ */
+:root {
+  /* ============================================================
+     1. SEMANTIC TOKENS — the site's actual color values, named by
+     role. This is the "Global defaults" tier: ordinary body copy,
+     buttons and section defaults (part 3) all read from here unless
+     a page/section override (part 3) or an independent block
+     (part 2) says otherwise. Deliberately monochrome by default:
+     black, the charcoal sampled from the logo, light greys and white.
+     ============================================================ */
+  --background: #ffffff;
+  --foreground: #000000;
+
+  --role-primary: #000000; /* headings, primary buttons, dark sections */
+  --role-secondary: #000000; /* secondary emphasis */
+  --role-accent: #000000; /* hover/active accents (site has no hue accent yet) */
+  --role-surface: #cccccc; /* alternating section backgrounds */
+  --role-text: #464646; /* body/heading text on light backgrounds */
+  --role-muted: #3d3d3d; /* secondary/muted text */
+  --role-border: #dadada; /* hairlines, dividers, card borders */
+  --role-button: #000000; /* solid button background */
+  --role-button-hover: #000000; /* solid button hover background */
+
+  /* ============================================================
+     2a. HEADER — fully independent of layer 1 on purpose.
+     Values are literal, not var() references to --role- tokens,
+     so a global text/background recolor never touches the header.
+     Covers the site header/navigation only (src/components/site-header.jsx).
+     ============================================================ */
+  --header-bg: rgba(255, 255, 255, 0.95); /* solid-state header bar background */
+  --header-text: #0d0d0d; /* logo-adjacent text, phone number, mobile menu, CTA text */
+  --header-nav: #6f6f6f; /* default nav-link color */
+  --header-hover: #000000; /* nav hover/active color, and the CTA button's own background */
+  --header-font-family: var(--font-montserrat), "Segoe UI", Arial, sans-serif;
+  --header-font-size: 0.7rem;
+  --header-font-weight: 600;
+  /*
+   * Not themed here on purpose: while the header floats over the
+   * homepage hero it switches to a transparent bar with white text so
+   * it stays legible over the video — that overlay state is a fixed
+   * legibility mechanism, not a themeable look, so it stays hardcoded
+   * white in site-header.jsx rather than reading these tokens.
+   */
+
+  /* ============================================================
+     2b. HOMEPAGE HERO SLIDER — fully independent of layer 1 on
+     purpose. Applies ONLY to src/components/hero.jsx (the homepage
+     hero); no other section reads these.
+     ============================================================ */
+  --hero-bg: #020202;
+  --hero-title-color: #ffffff;
+  --hero-body-color: rgba(255, 255, 255, 0.75);
+  --hero-button-bg: #ffffff;
+  --hero-button-text: #0d0d0d;
+  --hero-accent-color: rgba(255, 255, 255, 0.7); /* eyebrow + secondary button */
+  --hero-font-family: var(--font-montserrat), "Segoe UI", Arial, sans-serif;
+  --hero-title-size: clamp(2.05rem, 1.15rem + 3.4vw, 4.2rem);
+  --hero-text-size: clamp(1rem, 0.92rem + 0.3vw, 1.125rem);
+  --hero-font-weight: 800;
+
+  /* ============================================================
+     3. SECTION / PAGE SYSTEM — global defaults for every ordinary
+     section on every inner page (Section + SectionHeading + the
+     PageHero title band). These intentionally DO read from the
+     semantic layer above, because this is the "Global defaults"
+     tier of the cascade described at the top of this file. See the
+     bottom of this file for how page- and section-level overrides
+     slot in above these.
+     ============================================================ */
+  --section-bg: var(--background);
+  --section-heading-color: var(--role-text);
+  --section-body-color: var(--role-muted);
+  --section-accent-color: var(--role-muted);
+  --section-border-color: var(--role-border);
+  --section-heading-font: var(--font-montserrat), "Segoe UI", Arial, sans-serif;
+  --section-body-font: var(--font-montserrat), "Segoe UI", Arial, sans-serif;
+  --section-heading-size: clamp(1.5rem, 1.15rem + 1.5vw, 2.75rem);
+  --section-body-size: clamp(1rem, 0.95rem + 0.2vw, 1.125rem);
+  --section-heading-weight: 800;
+  --section-body-weight: 400;
+
+  /* The page-title band (PageHero) shares the section tokens above
+     for color/font/weight, but is visually the largest heading on
+     its page, so it gets its own size token. */
+  --page-title-size: clamp(1.875rem, 1.2rem + 2.6vw, 3.5rem);
+}
+
+/*
+ * Tone classes — applied by every themed block (Section, PageHero,
+ * and the three Services model cards) via a `tone-*` class matching
+ * its background. Each one overrides just the section tokens that
+ * differ for that background.
+ */
+.tone-canvas {
+  --section-bg: var(--background);
+}
+
+.tone-mist {
+  --section-bg: var(--role-surface);
+}
+
+.tone-ink {
+  --section-bg: var(--role-primary);
+  --section-heading-color: #ffffff;
+  --section-body-color: rgba(255, 255, 255, 0.7);
+  --section-accent-color: rgba(255, 255, 255, 0.6);
+  --section-border-color: rgba(255, 255, 255, 0.1);
+}
+
+/*
+ * PAGE- AND SECTION-LEVEL OVERRIDES.
+ *
+ * Priority, most specific wins, plain CSS cascade, no extra tooling:
+ * a root default is beaten by a page-level rule, which is beaten by
+ * a section-level rule.
+ *
+ * Every page is wrapped in a page class (see each page.js under
+ * src/app: page-home, page-about, page-services, page-experience,
+ * page-packages, page-discuss-your-land), and every major section
+ * already carries a stable id, printed on the section-id comments
+ * elsewhere in each page.js file. The page-title band on every
+ * inner page carries the id page-title. Use a page class together
+ * with a section id to restyle one section on one page only, e.g.
+ * a rule scoped to page-about and our-commitment together changes
+ * only the About page's Our Commitment section; a rule scoped to
+ * page-services and construction changes only that one service
+ * model card.
+ *
+ * Nothing is overridden below by default, so the site looks exactly
+ * as it does today until rules are added here.
+ */

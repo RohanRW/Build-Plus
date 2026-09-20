@@ -1,11 +1,18 @@
 import Reveal from "@/components/reveal";
 
-/** Shared page furniture so every section shares one rhythm. */
-
-const TONES = {
-  canvas: "bg-canvas text-ink",
-  mist: "bg-mist text-ink",
-  ink: "bg-black text-white",
+/**
+ * Shared page furniture so every section shares one rhythm.
+ *
+ * Colors and typography are NOT hardcoded here — every visible value
+ * comes from the --section-* custom properties (see src/app/colors.css).
+ * `tone` just picks which `.tone-*` class supplies those properties'
+ * default values; an ancestor `.page-<name>` or this element's own
+ * `id` can override any of them without touching this file.
+ */
+const TONE_CLASS = {
+  canvas: "tone-canvas",
+  mist: "tone-mist",
+  ink: "tone-ink",
 };
 
 export function Section({
@@ -19,50 +26,50 @@ export function Section({
     size === "tight" ? "py-14 sm:py-16" : "py-20 sm:py-28 lg:py-32";
 
   return (
-    <section id={id} className={`${TONES[tone] || TONES.canvas} ${className}`}>
+    <section
+      id={id}
+      className={`${TONE_CLASS[tone] || TONE_CLASS.canvas} bg-[var(--section-bg)] text-[var(--section-heading-color)] ${className}`}
+    >
       <div className={`mx-auto max-w-6xl px-5 sm:px-6 ${padding}`}>{children}</div>
     </section>
   );
 }
 
-export function SectionHeading({
-  eyebrow,
-  title,
-  body,
-  tone = "dark",
-  align = "left",
-  className = "",
-}) {
-  const light = tone === "light";
-
+export function SectionHeading({ eyebrow, title, body, align = "left", className = "" }) {
   return (
     <Reveal
       as="header"
       className={`max-w-3xl ${align === "center" ? "mx-auto text-center" : ""} ${className}`}
     >
       {eyebrow && (
-        <p className="eyebrow flex items-center gap-3">
-          <span
-            aria-hidden="true"
-            className={`h-px w-8 ${light ? "bg-white/40" : "bg-ink"}`}
-          />
-          <span className={light ? "text-white/60" : ""}>{eyebrow}</span>
+        <p
+          className="flex items-center gap-3 text-[0.68rem] font-semibold uppercase tracking-[0.3em] text-[var(--section-accent-color)]"
+          style={{ fontFamily: "var(--section-body-font)" }}
+        >
+          <span aria-hidden="true" className="h-px w-8 bg-[var(--section-accent-color)]" />
+          <span>{eyebrow}</span>
         </p>
       )}
       {title && (
         <h2
-          className={`mt-5 text-3xl font-extrabold leading-[1.08] tracking-tight sm:text-4xl lg:text-[2.75rem] ${
-            light ? "text-white" : "text-ink"
-          }`}
+          className="mt-5 leading-[1.08] tracking-tight text-[var(--section-heading-color)]"
+          style={{
+            fontFamily: "var(--section-heading-font)",
+            fontSize: "var(--section-heading-size)",
+            fontWeight: "var(--section-heading-weight)",
+          }}
         >
           {title}
         </h2>
       )}
       {body && (
         <p
-          className={`mt-6 text-base leading-relaxed sm:text-lg ${
-            light ? "text-white/70" : "text-slate"
-          }`}
+          className="mt-6 leading-relaxed text-[var(--section-body-color)]"
+          style={{
+            fontFamily: "var(--section-body-font)",
+            fontSize: "var(--section-body-size)",
+            fontWeight: "var(--section-body-weight)",
+          }}
         >
           {body}
         </p>

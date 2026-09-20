@@ -48,7 +48,7 @@ export default async function DiscussYourLandPage({ searchParams }) {
   const { contact, social } = site;
 
   return (
-    <>
+    <div className="page-discuss-your-land">
       <PageHero
         eyebrow="The Next Step"
         title="Let's discuss your land"
@@ -186,6 +186,6 @@ export default async function DiscussYourLandPage({ searchParams }) {
           ))}
         </ol>
       </Section>
-    </>
+    </div>
   );
 }

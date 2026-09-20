@@ -66,20 +66,6 @@ export const about = {
     ],
   },
 
-  leadership: {
-    eyebrow: "Leadership & Professional Team",
-    title: "A multidisciplinary team, under one roof",
-    body:
-      "BuildPlus works through a multidisciplinary team covering development, architecture, engineering, project management, commercial coordination and quality assurance.",
-    /*
-     * TODO(content): add confirmed people here, e.g.
-     *   { name: "", role: "Managing Director", bio: "", photo: "" }
-     * Nothing is invented — the section shows the team statement above
-     * until real names are supplied.
-     */
-    people: [],
-  },
-
   whyWeExist: {
     eyebrow: "Why BuildPlus Exists",
     title: "A valuable land deserves a valuable building",
@@ -121,7 +107,6 @@ export const about = {
       "Professional Management",
       "Quality",
       "Transparency",
-      "Accountability",
       "Time",
       "Convenience",
       "Peace of Mind",
