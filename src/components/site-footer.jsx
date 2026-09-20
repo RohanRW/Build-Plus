@@ -10,26 +10,6 @@ export default function SiteFooter() {
   return (
     <footer className="mt-auto bg-black text-white/70">
       {/* Closing call to action */}
-      <div className="border-b border-white/10">
-        <div className="mx-auto flex max-w-6xl flex-col gap-8 px-5 py-16 sm:px-6 lg:flex-row lg:items-center lg:justify-between">
-          <div>
-            <p className="eyebrow !text-white/50">{site.subTagline}</p>
-            <p className="mt-4 max-w-xl text-2xl font-extrabold leading-tight text-white sm:text-3xl">
-              Tell us about your land. We will tell you what it can become.
-            </p>
-          </div>
-          <Link
-            href={primaryCta.href}
-            className="group inline-flex shrink-0 items-center gap-3 bg-white px-8 py-4 text-xs font-bold uppercase tracking-[0.18em] text-ink transition hover:bg-white/85"
-          >
-            {primaryCta.label}
-            <ArrowUpRight
-              size={16}
-              className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-            />
-          </Link>
-        </div>
-      </div>
 
       <div className="mx-auto max-w-6xl px-5 py-16 sm:px-6">
         <div className="grid gap-12 md:grid-cols-3">

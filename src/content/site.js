@@ -33,7 +33,7 @@ export const site = {
     ],
     mapsUrl: "https://maps.app.goo.gl/Fu4qGcMe1MN5M6b46",
     mapsLabel: "Get Directions",
-    hours: "Sat – Thu, 10:00 – 19:00", // TODO(content): confirm office hours
+    hours: "Sat – Thu, 10:00 AM – 7:00 PM", // TODO(content): confirm office hours
   },
 
   /**

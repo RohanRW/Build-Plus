@@ -54,10 +54,10 @@ export const home = {
    * numbers (sft delivered, years active) when they are confirmed.
    */
   stats: [
-    { value: "06", label: "Developments behind the venture" },
-    { value: "02", label: "Growth corridors in Dhaka" },
-    { value: "08", label: "Phases from concept to handover" },
-    { value: "01", label: "Accountable development partner" },
+    { value: "2026", label: "Lake Garden Handover in December 2026" },
+    { value: "12", label: "Ongoing Projects in Bashundhara R/A & Jolshiri Abashon" },
+    { value: "40+", label: "Happy Customers" },
+    { value: "11+", label: "Upcomming Projects" },
   ],
 
   rayWhiteVenture: {
@@ -66,7 +66,7 @@ export const home = {
     // TODO(content): confirm the exact wording of the Ray White Ltd.
     // relationship, and whether their logo should appear alongside ours.
     body:
-      "Backed by the team behind Ray White Ltd.'s luxury-development experience, BuildPlus brings a developer's mindset to privately owned land.",
+      "Backed by the team behind Ray White Ltd.'s luxury development experience, BuildPlus brings a developer's mindset to privately owned land.",
     showParentLogo: false, // TODO(assets): supply the Ray White Ltd. logo to enable
   },
 

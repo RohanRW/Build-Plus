@@ -84,16 +84,6 @@ export default function SiteHeader() {
             );
           })}
 
-          <a
-            href={site.contact.phoneHref}
-            className={`flex items-center gap-2 text-[0.7rem] font-semibold tracking-[0.08em] transition ${
-              transparent ? "text-white/65 hover:text-white" : "text-slate hover:text-ink"
-            }`}
-          >
-            <Phone size={13} />
-            {site.contact.phone}
-          </a>
-
           <Link
             href={primaryCta.href}
             className={`group inline-flex items-center gap-2 whitespace-nowrap px-6 py-3 text-[0.7rem] font-bold uppercase tracking-[0.14em] transition ${
@@ -137,14 +127,7 @@ export default function SiteHeader() {
                 <ArrowRight size={16} className="text-slate" />
               </Link>
             ))}
-            <a
-              href={site.contact.phoneHref}
-              onClick={closeMenu}
-              className="flex items-center gap-2 border-b border-line py-4 text-sm font-medium text-slate"
-            >
-              <Phone size={15} />
-              {site.contact.phone}
-            </a>
+            
             <Link
               href={primaryCta.href}
               onClick={closeMenu}
