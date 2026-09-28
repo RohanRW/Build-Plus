@@ -215,7 +215,7 @@ export default function LandownerForm({ initialPackage = "" }) {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="mt-10 inline-flex items-center justify-center gap-3 bg-ink px-9 py-4 text-xs font-bold uppercase tracking-[0.18em] text-white transition hover:bg-charcoal disabled:cursor-not-allowed disabled:opacity-60"
+        className="mt-10 inline-flex items-center justify-center gap-3 bg-ink px-9 py-4 text-xs font-bold uppercase tracking-[0.18em] text-white transition hover:bg-accent disabled:cursor-not-allowed disabled:opacity-60"
       >
         {isSubmitting ? "Sending…" : "Send Enquiry"}
       </button>

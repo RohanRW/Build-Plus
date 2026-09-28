@@ -6,13 +6,13 @@
  */
 
 export const site = {
-  name: "BuildPlus",
+  name: "Build Plus",
   legalName: "Build Plus",
   parent: "Ray White Ltd.",
   // The logo lockup already carries "Your Land, Our Expertise", so the
   // tagline is never set again in type next to the logo. It stays here
   // only for page titles and social previews.
-  tagline: "Your Land, Our Expertise.",
+  tagline: "Your Land, We Develop, Your Building.",
   subTagline: "From Land to Landmark.",
 
   // TODO(content): confirm the live domain. Used for canonical URLs,
@@ -20,12 +20,12 @@ export const site = {
   url: "https://buildplus.example.com",
 
   contact: {
-    phone: "01843-563338",
-    phoneHref: "tel:+8801843563338",
+    phone: "+880 1711-268261",
+    phoneHref: "tel:+8801711268261",
     // TODO(content): confirm WhatsApp is the same number as above.
-    whatsapp: "8801843563338",
-    whatsappLabel: "Chat with BuildPlus",
-    email: "rohan@raywhiteltd.com",
+    whatsapp: "8801711268261",
+    whatsappLabel: "Chat with Build Plus",
+    email: "buildplusbangladesh@gmail.com",
     addressLines: [
       "Level 5, Suit 605 & 606, Rupayan Shopping Square",
       "Plot 02 Sayem Sobhan Anvir Rd",
@@ -44,7 +44,7 @@ export const site = {
   social: [
     {
       name: "Facebook",
-      label: "BuildPlus Bangladesh",
+      label: "Build Plus Bangladesh",
       href: "https://www.facebook.com/BuildPlusBD",
     },
   ],

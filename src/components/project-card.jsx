@@ -15,7 +15,7 @@ export default function ProjectCard({ project, developerLabel, developer }) {
   const cover = project.images?.[0];
 
   return (
-    <article className="group flex h-full flex-col border border-line bg-canvas transition-colors duration-300 hover:border-ink">
+    <article className="group flex h-full flex-col border border-line bg-canvas transition-colors duration-300 hover:border-accent">
       <div className="relative aspect-[4/3] w-full overflow-hidden bg-mist">
         {cover ? (
           <Image

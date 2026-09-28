@@ -12,17 +12,11 @@ import { z } from "zod";
 
 export const LAND_TYPES = ["Residential", "Commercial", "Mixed Use"];
 
-export const PACKAGE_OPTIONS = [
-  "Essential",
-  "Standard",
-  "Premium",
-  "Luxury",
-  "Custom",
-];
+export const PACKAGE_OPTIONS = ["Standard", "Premium", "Luxury", "Custom"];
 
 // TODO(content): confirm which units landowners should be offered.
 // Bangladesh land is usually quoted in Katha; the proposal uses Katha.
-export const LAND_SIZE_UNITS = ["Katha", "Decimal", "Bigha", "Acre", "Sq ft"];
+export const LAND_SIZE_UNITS = ["Katha", "Decimal", "Bigha"];
 
 // TODO(content): confirm whether to accept international numbers or
 // restrict to Bangladesh (+880).

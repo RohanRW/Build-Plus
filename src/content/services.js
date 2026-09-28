@@ -15,13 +15,20 @@ export const services = {
       option: "Option A",
       name: "Complete Turnkey",
       summary:
-        "We handle the entire project from concept to final handover — design, planning, engineering, construction, quality control, coordination and completion. You receive a fully completed building.",
+        "We handle the entire project from concept to final handover — feasibility, survey, design, approvals, construction, quality control and completion. You receive a fully completed building.",
       includes: [
-        "Concept and architectural design",
-        "Engineering and approvals",
-        "Construction and site management",
-        "Quality control and coordination",
-        "Final handover of a completed building",
+        "Feasibility cost & BOQ",
+        "Digital survey",
+        "Soil test",
+        "Architectural & structural design",
+        "Drawing approval",
+        "Construction & site management",
+        "Quality assurance & quality control",
+        "Construction procurement",
+        "Snagging",
+        "Commissioning",
+        "Final inspection",
+        "Completion & final handover",
       ],
       bestFor:
         "Landowners who want one accountable partner managing the entire process, start to finish.",
@@ -29,33 +36,20 @@ export const services = {
     {
       slug: "construction",
       option: "Option B",
-      name: "Construction",
+      name: "Construction & Development",
       summary:
-        "You already have the design and plans. We handle the construction and execution, ensuring quality, proper management and completion according to the approved design.",
+        "You already have the design, approvals and plans in place. We take over from site mobilization through to completion, managing construction, procurement and quality at every stage.",
       includes: [
-        "Construction against your approved design",
-        "Site and contractor management",
-        "Quality assurance and quality control",
-        "Schedule and cost monitoring",
-        "Completion and handover",
+        "Construction & site management",
+        "Quality assurance & quality control",
+        "Construction procurement",
+        "Snagging",
+        "Commissioning",
+        "Final inspection",
+        "Completion & final handover",
       ],
       bestFor:
         "Landowners with an approved design who need professional construction execution.",
-    },
-    {
-      slug: "consultancy-and-project-management",
-      option: "Option C",
-      name: "Consultancy & Project Management",
-      summary:
-        "We do not directly construct the project. We act as your professional consultant — providing guidance, technical advice, coordination, quality monitoring, cost and schedule oversight, and project supervision.",
-      includes: [
-        "Technical advice and guidance",
-        "Coordination of consultants and contractors",
-        "Quality monitoring and supervision",
-        "Cost and schedule oversight",
-      ],
-      bestFor:
-        "Landowners who have their own contractor but want professional oversight and accountability.",
     },
   ],
 

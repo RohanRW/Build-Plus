@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import Hero from "@/components/hero";
 import Reveal from "@/components/reveal";
@@ -7,7 +7,6 @@ import { Section, SectionHeading } from "@/components/section";
 import ProjectCard from "@/components/project-card";
 import { home } from "@/content/home";
 import { experience } from "@/content/experience";
-import { packages } from "@/content/packages";
 
 export default function HomePage() {
   const featured = experience.rayWhiteDevelopments.projects.slice(
@@ -59,7 +58,7 @@ export default function HomePage() {
               delay={(index % 4) * 0.08}
               className="group bg-canvas p-7 transition-colors duration-300 hover:bg-black"
             >
-              <p className="text-3xl font-extrabold text-line transition-colors duration-300 group-hover:text-white/25">
+              <p className="text-3xl font-extrabold text-secondary">
                 {phase.number}
               </p>
               <h3 className="mt-3 text-lg font-bold transition-colors duration-300 group-hover:text-white">
@@ -75,7 +74,7 @@ export default function HomePage() {
         <Reveal delay={0.1}>
           <Link
             href="/services#development-process"
-            className="group mt-12 inline-flex items-center gap-3 border border-ink px-8 py-4 text-xs font-bold uppercase tracking-[0.18em] transition hover:bg-ink hover:text-white"
+            className="group mt-12 inline-flex items-center gap-3 border border-ink px-8 py-4 text-xs font-bold uppercase tracking-[0.18em] transition hover:border-accent hover:bg-accent hover:text-white"
           >
             See the full process
             <ArrowRight
@@ -100,7 +99,7 @@ export default function HomePage() {
             <Reveal
               key={pillar.name}
               delay={(index % 3) * 0.08}
-              className="bg-black p-7 transition-colors duration-300 hover:bg-carbon"
+              className="bg-black p-7 transition-colors duration-300 hover:bg-secondary"
             >
               <h3 className="text-lg font-bold text-white">{pillar.name}</h3>
               <p className="mt-3 text-sm leading-relaxed text-white/60">
@@ -109,47 +108,6 @@ export default function HomePage() {
             </Reveal>
           ))}
         </div>
-
-        <Reveal delay={0.1}>
-          <h3 className="mt-20 text-2xl font-extrabold text-white sm:text-3xl">
-            {home.whyBuildPlus.comparison.title}
-          </h3>
-        </Reveal>
-
-        <Reveal delay={0.15} className="mt-8 overflow-x-auto">
-          <table className="w-full min-w-[34rem] border-collapse text-left text-sm">
-            <thead>
-              <tr className="border-b border-white/20">
-                {home.whyBuildPlus.comparison.columns.map((column, index) => (
-                  <th
-                    key={column}
-                    className={`py-4 pr-6 text-xs font-bold uppercase tracking-[0.14em] ${
-                      index === 0 ? "text-white/40" : "text-white"
-                    }`}
-                  >
-                    {column}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {home.whyBuildPlus.comparison.rows.map(([left, right]) => (
-                <tr
-                  key={left}
-                  className="border-b border-white/10 transition-colors hover:bg-white/5"
-                >
-                  <td className="py-4 pr-6 text-white/45">{left}</td>
-                  <td className="py-4 pr-6 text-white">
-                    <span className="flex items-start gap-2.5">
-                      <Check size={15} className="mt-0.5 shrink-0 text-white/50" />
-                      {right}
-                    </span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </Reveal>
       </Section>
 
       {/* Development Experience */}
@@ -174,7 +132,7 @@ export default function HomePage() {
         <Reveal delay={0.1}>
           <Link
             href={home.developmentExperience.ctaHref}
-            className="group mt-12 inline-flex items-center gap-3 border border-ink px-8 py-4 text-xs font-bold uppercase tracking-[0.18em] transition hover:bg-ink hover:text-white"
+            className="group mt-12 inline-flex items-center gap-3 border border-ink px-8 py-4 text-xs font-bold uppercase tracking-[0.18em] transition hover:border-accent hover:bg-accent hover:text-white"
           >
             {home.developmentExperience.ctaLabel}
             <ArrowRight
@@ -185,72 +143,18 @@ export default function HomePage() {
         </Reveal>
       </Section>
 
-      {/* Packages */}
-      <Section id="packages" tone="mist">
-        <SectionHeading
-          eyebrow={home.packagesTeaser.eyebrow}
-          title={home.packagesTeaser.title}
-          body={home.packagesTeaser.body}
-        />
-
-        <div className="mt-14 grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-4">
-          {packages.tiers.map((tier, index) => (
-            <Reveal
-              as="article"
-              key={tier.slug}
-              delay={index * 0.07}
-              className={`flex flex-col p-7 transition-colors duration-300 ${
-                tier.featured ? "bg-black text-white" : "bg-mist hover:bg-canvas"
-              }`}
-            >
-              <h3 className="text-2xl font-extrabold uppercase tracking-tight">
-                {tier.name}
-              </h3>
-              <p
-                className={`mt-2 text-xs uppercase tracking-[0.14em] ${
-                  tier.featured ? "text-white/45" : "text-slate"
-                }`}
-              >
-                {tier.tagline}
-              </p>
-              <p
-                className={`mt-5 flex-1 text-sm leading-relaxed ${
-                  tier.featured ? "text-white/65" : "text-slate"
-                }`}
-              >
-                {tier.positioning}
-              </p>
-            </Reveal>
-          ))}
-        </div>
-
-        <Reveal delay={0.1}>
-          <Link
-            href={home.packagesTeaser.ctaHref}
-            className="group mt-12 inline-flex items-center gap-3 border border-ink px-8 py-4 text-xs font-bold uppercase tracking-[0.18em] transition hover:bg-ink hover:text-white"
-          >
-            {home.packagesTeaser.ctaLabel}
-            <ArrowRight
-              size={16}
-              className="transition-transform group-hover:translate-x-1"
-            />
-          </Link>
-        </Reveal>
-      </Section>
-
       {/* Landowner CTA */}
-      <Section id="landowner-cta" tone="ink">
+      <Section id="landowner-cta">
         <div className="max-w-3xl">
           <SectionHeading
             eyebrow={home.landownerCta.eyebrow}
             title={home.landownerCta.title}
             body={home.landownerCta.body}
-            tone="light"
           />
           <Reveal delay={0.1}>
             <Link
               href={home.landownerCta.ctaHref}
-              className="group mt-12 inline-flex items-center gap-3 bg-white px-8 py-4 text-xs font-bold uppercase tracking-[0.18em] text-ink transition hover:bg-white/85"
+              className="group mt-12 inline-flex items-center gap-3 bg-ink px-8 py-4 text-xs font-bold uppercase tracking-[0.18em] text-white transition hover:bg-accent"
             >
               {home.landownerCta.ctaLabel}
               <ArrowRight

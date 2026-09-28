@@ -112,30 +112,14 @@ h4 {
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: bp-marquee 42s linear infinite;
+  /* Track is now 4 copies (two [light, navy] pairs) instead of 2, so the
+     84s here (double the old 42s) keeps the same px/s scroll speed —
+     translateX(-50%) now covers twice the distance per loop. */
+  animation: bp-marquee 84s linear infinite;
 }
 
 .marquee:hover .marquee-track {
   animation-play-state: paused;
-}
-
-/* Slow drift on the hero poster while the video loads. */
-@keyframes bp-drift {
-  from {
-    transform: scale(1.06);
-  }
-  to {
-    transform: scale(1.16);
-  }
-}
-
-.hero-drift {
-  animation: bp-drift 24s ease-in-out infinite alternate;
-}
-
-/* The palette is monochrome, so the footage is too. */
-.hero-media {
-  filter: grayscale(1) contrast(1.06);
 }
 
 /* The hero scroll cue. */
@@ -200,15 +184,9 @@ h4 {
   }
 
   .marquee-track,
-  .hero-drift,
   .scroll-cue,
   .rise {
     animation: none !important;
-  }
-
-  /* Still images only: the hero falls back to its poster. */
-  .hero-video {
-    display: none;
   }
 
   [data-js] [data-reveal] {

@@ -32,15 +32,15 @@
   --background: #ffffff;
   --foreground: #000000;
 
-  --role-primary: #000000; /* headings, primary buttons, dark sections */
-  --role-secondary: #000000; /* secondary emphasis */
-  --role-accent: #000000; /* hover/active accents (site has no hue accent yet) */
+  --role-primary: #162b4e; /* headings, primary buttons, dark sections */
+  --role-secondary: #b09c81; /* secondary emphasis */
+  --role-accent: #b09c81; /* hover/active accents */
   --role-surface: #cccccc; /* alternating section backgrounds */
-  --role-text: #464646; /* body/heading text on light backgrounds */
-  --role-muted: #3d3d3d; /* secondary/muted text */
+  --role-text: #162b4e; /* body/heading text on light backgrounds */
+  --role-muted: #162b4e; /* secondary/muted text */
   --role-border: #dadada; /* hairlines, dividers, card borders */
-  --role-button: #000000; /* solid button background */
-  --role-button-hover: #000000; /* solid button hover background */
+  --role-button: var(--role-primary); /* solid button background */
+  --role-button-hover: var(--role-accent); /* solid button hover background */
 
   /* ============================================================
      2a. HEADER — fully independent of layer 1 on purpose.
@@ -48,34 +48,41 @@
      so a global text/background recolor never touches the header.
      Covers the site header/navigation only (src/components/site-header.jsx).
      ============================================================ */
-  --header-bg: rgba(255, 255, 255, 0.95); /* solid-state header bar background */
-  --header-text: #0d0d0d; /* logo-adjacent text, phone number, mobile menu, CTA text */
-  --header-nav: #6f6f6f; /* default nav-link color */
-  --header-hover: #000000; /* nav hover/active color, and the CTA button's own background */
+  --header-bg: rgb(255, 255, 255); /* solid-state header bar background */
+  --header-text: #162b4e; /* logo-adjacent text, phone number, mobile menu, CTA background */
+  --header-nav: #162b4e; /* default nav-link color */
+  --header-hover: #162b4e; /* nav hover color, and the CTA button's hover background */
+  --header-active: #162b4e; /* current-page nav link + underline */
+  --header-border: #dadada;
   --header-font-family: var(--font-montserrat), "Segoe UI", Arial, sans-serif;
   --header-font-size: 0.7rem;
   --header-font-weight: 600;
-  /*
-   * Not themed here on purpose: while the header floats over the
-   * homepage hero it switches to a transparent bar with white text so
-   * it stays legible over the video — that overlay state is a fixed
-   * legibility mechanism, not a themeable look, so it stays hardcoded
-   * white in site-header.jsx rather than reading these tokens.
-   */
 
   /* ============================================================
      2b. HOMEPAGE HERO SLIDER — fully independent of layer 1 on
-     purpose. Applies ONLY to src/components/hero.jsx (the homepage
-     hero); no other section reads these.
+     purpose. Applies ONLY to src/components/hero.jsx and
+     hero-slider.jsx (the homepage hero); no other section reads these.
      ============================================================ */
-  --hero-bg: #020202;
-  --hero-title-color: #ffffff;
-  --hero-body-color: rgba(255, 255, 255, 0.75);
-  --hero-button-bg: #ffffff;
-  --hero-button-text: #0d0d0d;
-  --hero-accent-color: rgba(255, 255, 255, 0.7); /* eyebrow + secondary button */
+
+  --hero-bg: #f8f9fa;
+  --hero-shape: #eef0f3; /* large soft background circle */
+  --hero-title-color: #162b4e; /* "From Land to", eyebrow, card text */
+  --hero-title-accent: #b09c81; /* "Landmark" */
+  --hero-body-color: #4a5568;
+  --hero-button-bg: #162b4e;
+  --hero-button-text: #ffffff;
+  --hero-button-hover: #b09c81;
+  --hero-accent-color: #b09c81; /* strokes, dots, icons, eyebrow rule */
+  --hero-panel: #162b4e; /* navy backing panel behind the image */
+  --hero-border: #e5e7eb;
+  /* Capability strip: alternates between these two themes once per full
+     Feasibility→Handover cycle — see hero.jsx's MARQUEE_CYCLES. */
+  --hero-strip-bg: #ffffff;
+  --hero-strip-text: #162b4e;
+  --hero-strip-bg-alt: #162b4e;
+  --hero-strip-text-alt: #ffffff;
   --hero-font-family: var(--font-montserrat), "Segoe UI", Arial, sans-serif;
-  --hero-title-size: clamp(2.05rem, 1.15rem + 3.4vw, 4.2rem);
+  --hero-title-size: clamp(2.25rem, 1.2rem + 2.6vw, 3.6rem);
   --hero-text-size: clamp(1rem, 0.92rem + 0.3vw, 1.125rem);
   --hero-font-weight: 800;
 
@@ -104,6 +111,20 @@
      for color/font/weight, but is visually the largest heading on
      its page, so it gets its own size token. */
   --page-title-size: clamp(1.875rem, 1.2rem + 2.6vw, 3.5rem);
+}
+
+/*
+ * Header once the page has scrolled — site-header.jsx toggles this class.
+ * The CTA reads --header-text as its background and --header-bg as its
+ * text, so it flips to a white button with navy text automatically.
+ */
+.header-scrolled {
+  --header-bg: #162b4e;
+  --header-text: #ffffff;
+  --header-nav: #ffffff;
+  --header-hover: #b09c81; /* hover nav, CTA hover background */
+  --header-active: #ffffff;
+  --header-border: rgba(255, 255, 255, 0.12);
 }
 
 /*
@@ -150,3 +171,9 @@
  * Nothing is overridden below by default, so the site looks exactly
  * as it does today until rules are added here.
  */
+
+.page-home #landowner-cta {
+  --section-heading-color: #162b4e;
+  --section-body-color: #162b4e;
+  --section-accent-color: #162b4e;
+}

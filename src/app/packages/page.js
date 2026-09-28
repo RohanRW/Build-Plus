@@ -10,7 +10,7 @@ import { primaryCta } from "@/content/site";
 export const metadata = {
   title: "Packages",
   description:
-    "Essential, Standard, Premium and Luxury — indicative levels of architectural specification, materials, finishes and building systems from BuildPlus.",
+    "Standard, Premium and Luxury — indicative levels of architectural specification, materials, finishes and building systems from BuildPlus.",
 };
 
 export default function PackagesPage() {
@@ -24,7 +24,7 @@ export default function PackagesPage() {
       />
 
       {/* What every package carries */}
-      <Section id="in-every-package" tone="mist" size="tight">
+      <Section id="in-every-package" size="tight">
         <SectionHeading
           eyebrow={packages.constants.eyebrow}
           title={packages.constants.title}
@@ -44,9 +44,9 @@ export default function PackagesPage() {
         </ul>
       </Section>
 
-      {/* The four packages */}
+      {/* The packages */}
       <Section id="package-levels">
-        <div className="grid gap-7 lg:grid-cols-2 xl:grid-cols-4">
+        <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
           {packages.tiers.map((tier, index) => (
             <Reveal
               as="article"
@@ -81,7 +81,7 @@ export default function PackagesPage() {
               </p>
 
               <p
-                className={`mt-6 text-sm leading-relaxed ${
+                className={`mt-6 flex-1 text-sm leading-relaxed ${
                   tier.featured ? "text-white/70" : "text-slate"
                 }`}
               >
@@ -105,27 +105,12 @@ export default function PackagesPage() {
                 </p>
               )}
 
-              <ul className="mt-8 flex-1 space-y-3 text-sm">
-                {tier.inclusions.map((inclusion) => (
-                  <li
-                    key={inclusion}
-                    className={`border-t pt-3 ${
-                      tier.featured
-                        ? "border-white/15 text-white/75"
-                        : "border-line"
-                    }`}
-                  >
-                    {inclusion}
-                  </li>
-                ))}
-              </ul>
-
               <Link
                 href={`${primaryCta.href}?package=${tier.slug}`}
                 className={`group mt-8 inline-flex items-center justify-center gap-2 px-6 py-3.5 text-[0.7rem] font-bold uppercase tracking-[0.18em] transition ${
                   tier.featured
                     ? "bg-white text-ink hover:bg-white/85"
-                    : "border border-ink hover:bg-ink hover:text-white"
+                    : "border border-ink hover:border-accent hover:bg-accent hover:text-white"
                 }`}
               >
                 Enquire

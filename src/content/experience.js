@@ -9,23 +9,16 @@
 export const experience = {
   hero: {
     eyebrow: "Experience",
-    title: "The experience behind BuildPlus",
+    title: "The experience behind Build Plus",
     body:
-      "BuildPlus is backed by the development experience of Ray White Ltd. — the architectural, engineering, project-management and construction expertise supporting the venture.",
-  },
-
-  buildPlusProjects: {
-    eyebrow: "BuildPlus Projects",
-    title: "The first BuildPlus projects are under way",
-    body:
-      "BuildPlus is a newly launched turnkey development venture of Ray White Ltd. Our directly contracted projects will be documented here as they progress from planning and design through construction and final handover.",
+      "Build Plus is backed by the development experience of Ray White Ltd. — the architectural, engineering, project-management and construction expertise supporting the venture.",
   },
 
   rayWhiteDevelopments: {
-    eyebrow: "The Record Behind BuildPlus",
+    eyebrow: "The Record Behind Build Plus",
     title: "Selected developments",
     intro:
-      "BuildPlus is backed by the development experience of Ray White Ltd. The following selected developments represent the architectural, engineering, project-management and construction expertise supporting the BuildPlus venture.",
+      "Build Plus is backed by the development experience of Ray White Ltd. The following selected developments represent the architectural, engineering, project-management and construction expertise supporting the BuildPlus venture.",
     developerLabel: "A Ray White Ltd. Development",
     developer: "Ray White Ltd.",
 
@@ -49,7 +42,7 @@ export const experience = {
         location: "Bashundhara R/A, Block K",
         developmentType: "Premium Residential",
         configuration: "G+9",
-        unitArea: "2,040 sft and larger configurations",
+        unitArea: "2,040 sft, 2,585 sft, 4,625 sft",
         landArea: "",
         status: "Ongoing",
         summary:
@@ -58,6 +51,42 @@ export const experience = {
           {
             src: "/images/projects/sinfonia.jpg",
             alt: "Sinfonia — a Ray White Ltd. development",
+          },
+        ],
+      },
+      {
+        slug: "espacio",
+        name: "Espacio",
+        location: "Jolshiri Abashon, Sector 14",
+        developmentType: "Premium Residential",
+        configuration: "G+M+8",
+        unitArea: "2,850 sft",
+        landArea: "",
+        status: "Ongoing",
+        summary:
+          "A premium residential building in Jolshiri Abashon, planned around single large units per floor.",
+        images: [
+          {
+            src: "/images/projects/espacio.jpg",
+            alt: "Espacio — a Ray White Ltd. development",
+          },
+        ],
+      },
+      {
+        slug: "lake-garden",
+        name: "Lake Garden",
+        location: "Bashundhara R/A, Block M",
+        developmentType: "Residential",
+        configuration: "G+M+7",
+        unitArea: "2,478 sft, 2,570 sft",
+        landArea: "",
+        status: "Near Completion",
+        summary:
+          "A residential building nearing completion, with the largest typical unit sizes in the current portfolio.",
+        images: [
+          {
+            src: "/images/projects/lake-garden.jpg",
+            alt: "Lake Garden — a Ray White Ltd. development",
           },
         ],
       },
@@ -80,24 +109,6 @@ export const experience = {
         ],
       },
       {
-        slug: "lake-garden",
-        name: "Lake Garden",
-        location: "Bashundhara R/A, Block M",
-        developmentType: "Residential",
-        configuration: "G+M+7",
-        unitArea: "Approx. 2,478 – 2,570 sft",
-        landArea: "",
-        status: "Near Completion",
-        summary:
-          "A residential building nearing completion, with the largest typical unit sizes in the current portfolio.",
-        images: [
-          {
-            src: "/images/projects/lake-garden.jpg",
-            alt: "Lake Garden — a Ray White Ltd. development",
-          },
-        ],
-      },
-      {
         slug: "centra",
         name: "Centra",
         location: "Bashundhara R/A",
@@ -112,24 +123,6 @@ export const experience = {
           {
             src: "/images/projects/centra.jpg",
             alt: "Centra — a Ray White Ltd. development",
-          },
-        ],
-      },
-      {
-        slug: "espacio",
-        name: "Espacio",
-        location: "Jolshiri Abashon, Sector 14",
-        developmentType: "Premium Residential",
-        configuration: "G+M+8",
-        unitArea: "2,850 sft",
-        landArea: "",
-        status: "Ongoing",
-        summary:
-          "A premium residential building in Jolshiri Abashon, planned around single large units per floor.",
-        images: [
-          {
-            src: "/images/projects/espacio.jpg",
-            alt: "Espacio — a Ray White Ltd. development",
           },
         ],
       },

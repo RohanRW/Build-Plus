@@ -71,18 +71,6 @@ export default function SiteFooter() {
             </ul>
 
             <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-xs uppercase tracking-[0.14em]">
-              {contact.mapsUrl && (
-                <li>
-                  <a
-                    href={contact.mapsUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="transition hover:text-white"
-                  >
-                    {contact.mapsLabel}
-                  </a>
-                </li>
-              )}
               {whatsappUrl && (
                 <li>
                   <a

@@ -54,7 +54,7 @@ export default function AboutPage() {
       </Section>
 
       {/* Our Approach */}
-      <Section id="our-approach" tone="mist">
+      <Section id="our-approach" tone="white">
         <SectionHeading
           eyebrow={about.ourApproach.eyebrow}
           title={about.ourApproach.title}
@@ -64,10 +64,12 @@ export default function AboutPage() {
             <Reveal
               key={principle.name}
               delay={(index % 3) * 0.08}
-              className="bg-mist p-7 transition-colors duration-300 hover:bg-canvas"
+              className="group bg-white p-7 transition-colors duration-300 hover:bg-secondary"
             >
-              <h3 className="text-lg font-bold">{principle.name}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-slate">
+              <h3 className="text-lg font-bold group-hover:text-white">
+                {principle.name}
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-slate group-hover:text-white">
                 {principle.body}
               </p>
             </Reveal>
@@ -100,7 +102,7 @@ export default function AboutPage() {
       </Section>
 
       {/* Our Development Approach — the eight phases */}
-      <Section id="development-approach" tone="mist">
+      <Section id="development-approach" tone="white">
         <SectionHeading
           eyebrow={about.approach.eyebrow}
           title={about.approach.title}
@@ -112,13 +114,15 @@ export default function AboutPage() {
               as="li"
               key={phase.number}
               delay={(index % 4) * 0.08}
-              className="bg-mist p-7"
+              className="group bg-white p-7 transition-colors duration-300 hover:bg-secondary"
             >
-              <p className="text-3xl font-extrabold text-line">
+              <p className="text-3xl font-extrabold text-line group-hover:text-white">
                 {phase.number}
               </p>
-              <h3 className="mt-3 text-lg font-bold">{phase.name}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-slate">
+              <h3 className="mt-3 text-lg font-bold group-hover:text-white">
+                {phase.name}
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-slate group-hover:text-white">
                 {phase.summary}
               </p>
             </Reveal>
@@ -127,7 +131,7 @@ export default function AboutPage() {
       </Section>
 
       {/* A Ray White Ltd. Venture */}
-      <Section id="ray-white-venture" tone="mist">
+      <Section id="ray-white-venture">
         <SectionHeading
           eyebrow={about.rayWhiteVenture.eyebrow}
           title={about.rayWhiteVenture.title}
@@ -155,12 +159,11 @@ export default function AboutPage() {
       </Section>
 
       {/* Our Commitment */}
-      <Section id="our-commitment" tone="ink">
+      <Section id="our-commitment">
         <SectionHeading
           eyebrow={about.commitment.eyebrow}
           title={about.commitment.title}
           body={about.commitment.intro}
-          tone="light"
         />
 
         <Reveal
@@ -171,22 +174,26 @@ export default function AboutPage() {
           {about.commitment.values.map((value) => (
             <li
               key={value}
-              className="border border-white/20 px-5 py-2.5 text-xs font-bold uppercase tracking-[0.14em] text-white"
+              className="border border-ink/20 px-5 py-2.5 text-xs font-bold uppercase tracking-[0.14em] text-ink"
             >
               {value}
             </li>
           ))}
         </Reveal>
 
-        <div className="mt-16 grid gap-px bg-white/10 sm:grid-cols-2">
+        <div className="mt-16 grid gap-px bg-line sm:grid-cols-2">
           {about.commitment.gains.map((gain, index) => (
             <Reveal
               key={gain.name}
               delay={(index % 2) * 0.08}
-              className="bg-black p-7 transition-colors duration-300 hover:bg-carbon"
+              className="group bg-white p-7 transition-colors duration-300 hover:bg-secondary"
             >
-              <h3 className="text-lg font-bold text-white">{gain.name}</h3>
-              <p className="mt-3 leading-relaxed text-white/60">{gain.body}</p>
+              <h3 className="text-lg font-bold text-ink group-hover:text-white">
+                {gain.name}
+              </h3>
+              <p className="mt-3 leading-relaxed text-slate group-hover:text-white">
+                {gain.body}
+              </p>
             </Reveal>
           ))}
         </div>

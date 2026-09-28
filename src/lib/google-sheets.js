@@ -48,7 +48,7 @@ function getClient() {
 export async function appendEnquiry(enquiry) {
   const sheets = getClient();
   const spreadsheetId = process.env.GOOGLE_SHEETS_SPREADSHEET_ID;
-  const sheetName = process.env.GOOGLE_SHEETS_TAB_NAME || "Enquiries";
+  const sheetName = process.env.GOOGLE_SHEETS_TAB_NAME;
 
   const row = [
     new Date().toISOString(),

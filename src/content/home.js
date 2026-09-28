@@ -4,30 +4,45 @@
  * marked TODO.
  */
 
+const ONGOING_PROJECTS = "12";
+
 export const home = {
   hero: {
     eyebrow: "A Ray White Ltd. Venture",
     // The logo lockup already reads "Your Land, Our Expertise", so the
-    // headline says the next thing rather than repeating it.
-    title: "From Land to Landmark.",
+    // headline says the next thing rather than repeating it. Split so the
+    // accent word can take the secondary color; reads "From Land to Landmark."
+    title: { lead: "From Land to", accent: "Landmark"},
     body:
       "You already own the most important part of the project — the land. From the first concept to final handover, one professional team manages the entire development process for you.",
     /*
-     * Hero background video.
-     *
-     * TODO(assets): `src` is a PLACEHOLDER — a free Pexels construction
-     * clip hotlinked from their CDN. Replace it with BuildPlus site
-     * footage: either a direct .mp4 URL, or drop a file in /public/videos/
-     * and point to "/videos/your-file.mp4". `poster` is a frame grabbed
-     * from the same clip; swap it whenever the video changes, since it is
-     * what shows while the video loads and all that renders for visitors
-     * who prefer reduced motion.
+     * Hero slider media, shown in order. Each slide is either
+     *   { type: "image", src, alt }
+     * or
+     *   { type: "video", src, poster, alt }
+     * Images show for 5 seconds; videos play muted once through, then the
+     * next slide shows. A video's poster shows until it loads
+     * (and instead of them for visitors who prefer reduced motion).
+     * TODO(assets): these are stock construction photos, not BuildPlus
+     * sites — swap in project photography/footage when available.
      */
-    video: {
-      src: "https://videos.pexels.com/video-files/855271/855271-hd_1920_1080_25fps.mp4",
-      poster: "/images/hero-poster.jpg",
-    },
-    imageAlt: "Construction of a BuildPlus development in progress",
+    slides: [
+      {
+        type: "video",
+        src: "/Video-1.mp4",
+        alt: "Tower crane above a building wrapped in scaffolding at sunset",
+      },
+      {
+        type: "video",
+        src: "/Video-2.mp4",
+        alt: "Two tower cranes over a multi-storey residential building under construction",
+      },
+      {
+        type: "video",
+        src: "/Video-3.mp4",
+        alt: "Tower cranes beside high-rise buildings against a clear sky",
+      },
+    ],
     secondaryCtaLabel: "See how it works",
     secondaryCtaHref: "#how-it-works",
   },
@@ -55,7 +70,7 @@ export const home = {
    */
   stats: [
     { value: "2026", label: "Lake Garden Handover in December 2026" },
-    { value: "12", label: "Ongoing Projects in Bashundhara R/A & Jolshiri Abashon" },
+    { value: ONGOING_PROJECTS, label: "Ongoing Projects in Bashundhara R/A & Jolshiri Abashon" },
     { value: "40+", label: "Happy Customers" },
     { value: "11+", label: "Upcomming Projects" },
   ],
@@ -188,7 +203,7 @@ export const home = {
   },
 
   whyBuildPlus: {
-    eyebrow: "Why BuildPlus",
+    eyebrow: "Why Build Plus",
     title: "We don't simply construct your building. We develop it for you.",
     intro:
       "Building a premium property requires a developer's mindset — not simply a contractor's mindset.",
@@ -219,43 +234,17 @@ export const home = {
         body: "One team coordinating the project from concept to completion.",
       },
     ],
-    comparison: {
-      title: "Traditional construction vs the BuildPlus turnkey model",
-      columns: ["Traditional Approach", "BuildPlus Turnkey Development"],
-      rows: [
-        ["Owner finds architect", "We coordinate design"],
-        ["Owner finds engineers", "We coordinate engineering"],
-        ["Owner manages contractors", "We manage contractors"],
-        ["Owner coordinates suppliers", "We manage procurement"],
-        ["Owner monitors quality", "Professional QA/QC"],
-        ["Owner follows construction daily", "Professional project management"],
-        ["Multiple parties to deal with", "One accountable partner"],
-        ["Owner solves site problems", "Our team manages site problems"],
-        ["Owner spends significant personal time", "Owner receives structured reporting"],
-        ["Responsibilities can become unclear", "Defined contractual responsibility"],
-      ],
-    },
   },
 
   developmentExperience: {
     eyebrow: "Development Experience",
     title: "The record behind the venture",
     intro:
-      "BuildPlus is backed by the development experience of Ray White Ltd. Selected developments below represent the architectural, engineering, project-management and construction expertise supporting the venture.",
+      "Build Plus is backed by the development experience of Ray White Ltd. Selected developments below represent the architectural, engineering, project-management and construction expertise supporting the venture.",
     // Cards pull from src/content/experience.js.
     featuredCount: 3,
     ctaLabel: "View our experience",
     ctaHref: "/experience",
-  },
-
-  packagesTeaser: {
-    eyebrow: "Packages",
-    title: "Four packages, one professional standard of delivery",
-    body:
-      "BuildPlus offers different levels of architectural specification, materials, finishes and building systems depending on the landowner's objectives, project type and investment plan. The management, engineering and reporting are the same in every one.",
-    // Cards pull from src/content/packages.js.
-    ctaLabel: "Compare packages",
-    ctaHref: "/packages",
   },
 
   landownerCta: {

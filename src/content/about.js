@@ -5,14 +5,14 @@ export const about = {
     eyebrow: "About Us",
     title: "A development partner for landowners",
     body:
-      "BuildPlus is the turnkey development venture of Ray White Ltd., created so that landowners can develop their property without having to manage the development themselves.",
+      "Build Plus is the turnkey development venture of Ray White Ltd., created so that landowners can develop their property without having to manage the development themselves.",
   },
 
   whoWeAre: {
     eyebrow: "Who We Are",
     title: "One team, accountable from concept to handover",
     paragraphs: [
-      "BuildPlus is a turnkey development venture of Ray White Ltd., created to provide landowners with a professionally managed approach to developing their property.",
+      "Build Plus is a turnkey development venture of Ray White Ltd., created to provide landowners with a professionally managed approach to developing their property.",
       "From feasibility and architectural planning to engineering, budgeting, procurement, construction, quality control and final handover, BuildPlus brings the entire development process under one responsible team.",
       "Our approach is supported by the development experience of Ray White Ltd., combining a developer's perspective with structured project management, technical coordination and attention to quality.",
     ],
@@ -67,7 +67,7 @@ export const about = {
   },
 
   whyWeExist: {
-    eyebrow: "Why BuildPlus Exists",
+    eyebrow: "Why Build Plus Exists",
     title: "A valuable land deserves a valuable building",
     paragraphs: [
       "You already own the most important part of the project — the land. But developing a building requires much more than hiring a contractor. It requires architectural planning, engineering, approvals, budgeting, procurement, construction supervision, quality control, finishing and coordination among many different professionals.",

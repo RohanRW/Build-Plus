@@ -65,11 +65,7 @@ export default function PageHero({ eyebrow, title, body, note, cta }) {
               href={cta.href}
               target="_blank"
               rel="noreferrer"
-              className="group mt-8 inline-flex items-center gap-3 border px-8 py-4 text-xs font-bold uppercase tracking-[0.18em] transition hover:bg-white/10"
-              style={{
-                borderColor: "var(--section-border-color)",
-                color: "var(--section-heading-color)",
-              }}
+              className="group mt-8 inline-flex items-center gap-3 border border-[var(--section-border-color)] px-8 py-4 text-xs font-bold uppercase tracking-[0.18em] text-[var(--section-heading-color)] transition-colors duration-300 hover:border-secondary hover:bg-secondary hover:text-primary"
             >
               {cta.label}
               <ArrowUpRight

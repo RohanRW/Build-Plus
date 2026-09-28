@@ -156,7 +156,7 @@ export default async function DiscussYourLandPage({ searchParams }) {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-8 inline-flex w-full items-center justify-center gap-2 border border-ink px-6 py-3.5 text-[0.7rem] font-bold uppercase tracking-[0.18em] transition hover:bg-ink hover:text-white"
+                className="mt-8 inline-flex w-full items-center justify-center gap-2 border border-ink px-6 py-3.5 text-[0.7rem] font-bold uppercase tracking-[0.18em] transition hover:border-accent hover:bg-accent hover:text-white"
               >
                 <MessageCircle size={15} />
                 Chat on WhatsApp
@@ -167,7 +167,7 @@ export default async function DiscussYourLandPage({ searchParams }) {
       </Section>
 
       {/* What happens next */}
-      <Section id="what-happens-next" tone="mist" size="tight">
+      <Section id="what-happens-next" size="tight">
         <h2 className="eyebrow">What happens next</h2>
         <ol className="mt-10 grid gap-px bg-line sm:grid-cols-3">
           {NEXT_STEPS.map((step, index) => (
@@ -175,7 +175,7 @@ export default async function DiscussYourLandPage({ searchParams }) {
               as="li"
               key={step.number}
               delay={index * 0.08}
-              className="bg-mist p-7"
+              className="bg-white p-7"
             >
               <p className="text-3xl font-extrabold text-line">{step.number}</p>
               <h3 className="mt-3 text-lg font-bold">{step.name}</h3>
