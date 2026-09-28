@@ -21,22 +21,21 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || site.url;
 export const metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${site.name} — ${site.tagline}`,
+    default: `${site.name} - ${site.tagline}`,
     template: `%s | ${site.name}`,
   },
   description:
-    "BuildPlus is a turnkey development partner for landowners. One professional team manages design, engineering, approvals, construction and handover.",
+    "Build Plus is a turnkey development partner for landowners. One professional team manages design, engineering, approvals, construction and handover.",
   openGraph: {
     type: "website",
     siteName: site.name,
-    title: `${site.name} — ${site.tagline}`,
+    title: `${site.name} - ${site.tagline}`,
     description: site.subTagline,
     url: siteUrl,
     images: [{ url: "/logo-lockup.png", width: 1952, height: 1384 }],
   },
   icons: {
-    icon: "/logo-mark.png",
-    apple: "/logo-mark.png",
+    icon: { url: "/emblem-blue.svg", type: "image/svg+xml" },
   },
 };
 

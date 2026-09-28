@@ -12,7 +12,7 @@ export const site = {
   // The logo lockup already carries "Your Land, Our Expertise", so the
   // tagline is never set again in type next to the logo. It stays here
   // only for page titles and social previews.
-  tagline: "Your Land, We Develop, Your Building.",
+  tagline: "Your Land, We Develop, Your Building",
   subTagline: "From Land to Landmark.",
 
   // TODO(content): confirm the live domain. Used for canonical URLs,
